@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [" C ", "CSC", " C "],
+  "key": {
+    "C": {
+      "item": "cherries:cherry"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "result": {
+    "item": "cherries:cherry_jam",
+    "count": 2
+  }
+}
