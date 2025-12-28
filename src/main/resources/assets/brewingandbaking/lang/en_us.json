@@ -1,0 +1,14 @@
+{
+  "itemGroup.brewingandbaking": "Brewing and Baking",
+  "item.brewingandbaking.cherry": "Cherry",
+  "item.brewingandbaking.cherry_pie": "Cherry Pie",
+  "item.brewingandbaking.cherry_jam": "Cherry Jam",
+
+  "brewingandbaking.configuration.title": "Brewing and Baking Configs",
+  "brewingandbaking.configuration.section.brewingandbaking.common.toml": "Brewing and Baking Configs",
+  "brewingandbaking.configuration.section.brewingandbaking.common.toml.title": "Brewing and Baking Configs",
+  "brewingandbaking.configuration.items": "Item List",
+  "brewingandbaking.configuration.logDirtBlock": "Log Dirt Block",
+  "brewingandbaking.configuration.magicNumberIntroduction": "Magic Number Text",
+  "brewingandbaking.configuration.magicNumber": "Magic Number"
+}

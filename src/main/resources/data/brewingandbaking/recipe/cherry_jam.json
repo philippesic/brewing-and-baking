@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "brewingandbaking:cherry" },
+    { "item": "brewingandbaking:cherry" },
+    { "item": "minecraft:sugar" }
+  ],
+  "result": {
+    "id": "brewingandbaking:cherry_jam",
+    "count": 1
+  }
+}

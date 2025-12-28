@@ -1,0 +1,9 @@
+modLoader="javafml"
+loaderVersion="[1,)"     # javafml is currently version 1 :contentReference[oaicite:0]{index=0}
+license="CC0-1.0"
+
+[[mods]]
+modId="brewingandbaking"
+version="1.1.0"
+displayName="Brewing and Baking"
+description='''The Food and Drink mod, updated from Cherries!'''
