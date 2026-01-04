@@ -28,7 +28,9 @@ private static void addCreative(BuildCreativeModeTabContentsEvent event) {
     );
 
     // if you want jam/pie right after cherry:
-    event.insertAfter(new ItemStack(ModItems.CHERRY.get()),     new ItemStack(ModItems.CHERRY_JAM.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-    event.insertAfter(new ItemStack(ModItems.CHERRY_JAM.get()), new ItemStack(ModItems.CHERRY_PIE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+    event.insertAfter(new ItemStack(ModItems.CHERRY.get()),         new ItemStack(ModItems.CHERRY_JAM.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+    event.insertAfter(new ItemStack(ModItems.CHERRY_JAM.get()),     new ItemStack(ModItems.CHERRY_PIE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+    event.insertAfter(new ItemStack(ModItems.CHERRY_PIE.get()),     new ItemStack(ModItems.CACAO_NIBS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+    event.insertAfter(new ItemStack(ModItems.CACAO_NIBS.get()),     new ItemStack(ModItems.CHOCOLATE_BAR.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 }
 }
