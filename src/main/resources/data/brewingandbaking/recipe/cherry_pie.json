@@ -2,10 +2,10 @@
   "type": "minecraft:crafting_shaped",
   "pattern": ["SES", "CCC", "WWW"],
   "key": {
-    "W": { "item": "minecraft:wheat" },
-    "C": { "item": "brewingandbaking:cherry" },
-    "S": { "item": "minecraft:sugar" },
-    "E": { "item": "minecraft:egg" }
+    "W": "minecraft:wheat",
+    "C": "brewingandbaking:cherry",
+    "S": "minecraft:sugar",
+    "E": "minecraft:egg"
   },
   "result": {
     "id": "brewingandbaking:cherry_pie",
