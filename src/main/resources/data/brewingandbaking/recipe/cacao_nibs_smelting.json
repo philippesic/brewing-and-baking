@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:smelting",
+    "category": "food",
+    "cookingtime": 200,
+    "experience": 0.1,
+    "ingredient": "minecraft:cocoa_beans",
+    "result": {
+      "id": "brewingandbaking:cacao_nibs"
+    }
+  }

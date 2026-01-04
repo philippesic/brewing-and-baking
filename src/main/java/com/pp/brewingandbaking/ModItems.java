@@ -33,6 +33,16 @@ public final class ModItems {
             .saturationModifier(0.3f)
             .build();
 
+    private static final FoodProperties CACAO_NIBS_FOOD = new FoodProperties.Builder()
+            .nutrition(1)
+            .saturationModifier(0.3f)
+            .build();
+
+    private static final FoodProperties CHOCOLATE_BAR_FOOD = new FoodProperties.Builder()
+            .nutrition(4)
+            .saturationModifier(0.2f)
+            .build();
+
     // "effect(...)" moved off FoodProperties; use Consumable.onConsume(...) instead.
     private static final Consumable CHERRY_JAM_CONSUMABLE = Consumables.defaultFood()
             .onConsume(new ApplyStatusEffectsConsumeEffect(
@@ -55,4 +65,15 @@ public final class ModItems {
             "cherry_jam",
             props -> props.food(CHERRY_JAM_FOOD, CHERRY_JAM_CONSUMABLE)
     );
+    
+    public static final DeferredItem<Item> CACAO_NIBS = ITEMS.registerSimpleItem(
+            "cacao_nibs",
+            props -> props.food(CACAO_NIBS_FOOD, Consumables.DEFAULT_FOOD)
+    );
+
+    public static final DeferredItem<Item> CHOCOLATE_BAR = ITEMS.registerSimpleItem(
+            "chocolate_bar",
+            props -> props.food(CHOCOLATE_BAR_FOOD, Consumables.DEFAULT_FOOD)
+    );
+
 }
