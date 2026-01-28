@@ -36,7 +36,7 @@ private static void addCreative(BuildCreativeModeTabContentsEvent event) {
                 CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
         event.insertAfter(new ItemStack(Items.COOKIE),
-                new ItemStack(ModItems.CHOCOLATE_BAR.get()),
+                new ItemStack(ModItems.CHOCOLATE.get()),
                 CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
     }
 
