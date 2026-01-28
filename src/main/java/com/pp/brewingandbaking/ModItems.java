@@ -34,8 +34,8 @@ public final class ModItems {
             .build();
 
     private static final FoodProperties CHOCOLATE_BAR_FOOD = new FoodProperties.Builder()
-            .nutrition(4)
-            .saturationModifier(0.2f)
+            .nutrition(3)
+            .saturationModifier(0.35f)
             .build();
 
     // "effect(...)" moved off FoodProperties; use Consumable.onConsume(...) instead.
