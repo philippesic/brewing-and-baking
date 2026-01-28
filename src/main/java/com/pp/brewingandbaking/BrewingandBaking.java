@@ -18,19 +18,35 @@ public class BrewingandBaking {
     }
 
 private static void addCreative(BuildCreativeModeTabContentsEvent event) {
-    if (event.getTabKey() != CreativeModeTabs.FOOD_AND_DRINKS) return;
 
-    // IMPORTANT: counts must be 1, and you must reference CreativeModeTab.TabVisibility (not event.TabVisibility)
-    event.insertAfter(
-        new ItemStack(Items.GLOW_BERRIES),
-        new ItemStack(ModItems.CHERRY.get()),
-        CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-    );
+    // Food and Drinks tab
+    if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+        event.insertAfter(
+            new ItemStack(Items.GLOW_BERRIES),
+            new ItemStack(ModItems.CHERRY.get()),
+            CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+        );
 
-    // if you want jam/pie right after cherry:
-    event.insertAfter(new ItemStack(ModItems.CHERRY.get()),         new ItemStack(ModItems.CHERRY_JAM.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-    event.insertAfter(new ItemStack(ModItems.CHERRY_JAM.get()),     new ItemStack(ModItems.CHERRY_PIE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-    event.insertAfter(new ItemStack(ModItems.CHERRY_PIE.get()),     new ItemStack(ModItems.CACAO_NIBS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-    event.insertAfter(new ItemStack(ModItems.CACAO_NIBS.get()),     new ItemStack(ModItems.CHOCOLATE_BAR.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        event.insertAfter(new ItemStack(ModItems.CHERRY.get()),
+                new ItemStack(ModItems.CHERRY_JAM.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+        event.insertAfter(new ItemStack(ModItems.CHERRY_JAM.get()),
+                new ItemStack(ModItems.CHERRY_PIE.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+
+        event.insertAfter(new ItemStack(Items.COOKIE),
+                new ItemStack(ModItems.CHOCOLATE_BAR.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+    }
+
+    // Ingredients tab
+    if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+        event.insertAfter(new ItemStack(Items.WHEAT),
+                new ItemStack(ModItems.CACAO_NIBS.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+        );
+    }
 }
+
 }

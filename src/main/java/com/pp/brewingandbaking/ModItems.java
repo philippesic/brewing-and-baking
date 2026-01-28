@@ -33,11 +33,6 @@ public final class ModItems {
             .saturationModifier(0.3f)
             .build();
 
-    private static final FoodProperties CACAO_NIBS_FOOD = new FoodProperties.Builder()
-            .nutrition(1)
-            .saturationModifier(0.3f)
-            .build();
-
     private static final FoodProperties CHOCOLATE_BAR_FOOD = new FoodProperties.Builder()
             .nutrition(4)
             .saturationModifier(0.2f)
@@ -67,8 +62,7 @@ public final class ModItems {
     );
     
     public static final DeferredItem<Item> CACAO_NIBS = ITEMS.registerSimpleItem(
-            "cacao_nibs",
-            props -> props.food(CACAO_NIBS_FOOD, Consumables.DEFAULT_FOOD)
+            "cacao_nibs"
     );
 
     public static final DeferredItem<Item> CHOCOLATE_BAR = ITEMS.registerSimpleItem(
