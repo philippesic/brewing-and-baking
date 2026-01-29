@@ -5,7 +5,7 @@
     "W": "minecraft:wheat",
     "C": "brewingandbaking:cherry",
     "S": "minecraft:sugar",
-    "E": "minecraft:egg"
+    "E": "#minecraft:eggs"
   },
   "result": {
     "id": "brewingandbaking:cherry_pie",
