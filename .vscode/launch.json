@@ -12,13 +12,13 @@
       "projectName": "brewing-and-baking",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@/Users/pippo/github/brewing-and-baking/build/moddev/clientRunProgramArgs.txt"
+        "@C:\\Users\\sures\\github\\brewing-and-baking\\build\\moddev\\clientRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@/Users/pippo/github/brewing-and-baking/build/moddev/clientRunVmArgs.txt",
-        "-Dfml.modFolders\u003dbrewingandbaking%%/Users/pippo/github/brewing-and-baking/bin/main"
+        "@C:\\Users\\sures\\github\\brewing-and-baking\\build\\moddev\\clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dbrewingandbaking%%C:\\Users\\sures\\github\\brewing-and-baking\\bin\\main"
       ],
-      "cwd": "${workspaceFolder}/run",
+      "cwd": "${workspaceFolder}\\run",
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
@@ -34,13 +34,13 @@
       "projectName": "brewing-and-baking",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@/Users/pippo/github/brewing-and-baking/build/moddev/dataRunProgramArgs.txt"
+        "@C:\\Users\\sures\\github\\brewing-and-baking\\build\\moddev\\dataRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@/Users/pippo/github/brewing-and-baking/build/moddev/dataRunVmArgs.txt",
-        "-Dfml.modFolders\u003dbrewingandbaking%%/Users/pippo/github/brewing-and-baking/bin/main"
+        "@C:\\Users\\sures\\github\\brewing-and-baking\\build\\moddev\\dataRunVmArgs.txt",
+        "-Dfml.modFolders\u003dbrewingandbaking%%C:\\Users\\sures\\github\\brewing-and-baking\\bin\\main"
       ],
-      "cwd": "${workspaceFolder}/run",
+      "cwd": "${workspaceFolder}\\run",
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
@@ -56,13 +56,13 @@
       "projectName": "brewing-and-baking",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@/Users/pippo/github/brewing-and-baking/build/moddev/gameTestServerRunProgramArgs.txt"
+        "@C:\\Users\\sures\\github\\brewing-and-baking\\build\\moddev\\gameTestServerRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@/Users/pippo/github/brewing-and-baking/build/moddev/gameTestServerRunVmArgs.txt",
-        "-Dfml.modFolders\u003dbrewingandbaking%%/Users/pippo/github/brewing-and-baking/bin/main"
+        "@C:\\Users\\sures\\github\\brewing-and-baking\\build\\moddev\\gameTestServerRunVmArgs.txt",
+        "-Dfml.modFolders\u003dbrewingandbaking%%C:\\Users\\sures\\github\\brewing-and-baking\\bin\\main"
       ],
-      "cwd": "${workspaceFolder}/run",
+      "cwd": "${workspaceFolder}\\run",
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"
@@ -78,13 +78,13 @@
       "projectName": "brewing-and-baking",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@/Users/pippo/github/brewing-and-baking/build/moddev/serverRunProgramArgs.txt"
+        "@C:\\Users\\sures\\github\\brewing-and-baking\\build\\moddev\\serverRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@/Users/pippo/github/brewing-and-baking/build/moddev/serverRunVmArgs.txt",
-        "-Dfml.modFolders\u003dbrewingandbaking%%/Users/pippo/github/brewing-and-baking/bin/main"
+        "@C:\\Users\\sures\\github\\brewing-and-baking\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dbrewingandbaking%%C:\\Users\\sures\\github\\brewing-and-baking\\bin\\main"
       ],
-      "cwd": "${workspaceFolder}/run",
+      "cwd": "${workspaceFolder}\\run",
       "env": {},
       "console": "internalConsole",
       "shortenCommandLine": "none"

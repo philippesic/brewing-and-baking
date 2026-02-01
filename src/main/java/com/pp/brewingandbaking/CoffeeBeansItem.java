@@ -9,6 +9,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 
 public class CoffeeBeansItem extends Item {
     public CoffeeBeansItem(Properties props) {
@@ -45,6 +47,7 @@ public class CoffeeBeansItem extends Item {
             }
 
             level.setBlock(placePos, plantState, 3);
+            level.playSound(null, placePos, SoundEvents.SWEET_BERRY_BUSH_PLACE, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
 
             ItemStack stack = ctx.getItemInHand();
             if (ctx.getPlayer() == null || !ctx.getPlayer().getAbilities().instabuild) {
