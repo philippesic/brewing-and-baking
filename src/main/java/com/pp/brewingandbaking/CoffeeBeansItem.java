@@ -1,5 +1,6 @@
 package com.pp.brewingandbaking;
 
+import com.pp.brewingandbaking.core.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;

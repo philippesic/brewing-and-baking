@@ -1,9 +1,8 @@
 package com.pp.brewingandbaking.client;
 
-import com.pp.brewingandbaking.BrewingandBaking;
-import com.pp.brewingandbaking.ModBrewing;
-import com.pp.brewingandbaking.ModItems;
-import com.pp.brewingandbaking.ModPotions;
+import com.pp.brewingandbaking.core.BrewingandBaking;
+import com.pp.brewingandbaking.core.ModBrewing;
+import com.pp.brewingandbaking.core.ModPotions;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;

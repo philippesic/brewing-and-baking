@@ -1,7 +1,7 @@
 package com.pp.brewingandbaking.worldgen;
 
-import com.pp.brewingandbaking.BrewingandBaking;
-import com.pp.brewingandbaking.ModBlocks;
+import com.pp.brewingandbaking.core.BrewingandBaking;
+import com.pp.brewingandbaking.core.ModBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;

@@ -3,6 +3,9 @@ package com.pp.brewingandbaking;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import com.pp.brewingandbaking.core.ModBrewing;
+import com.pp.brewingandbaking.core.ModItems;
+import com.pp.brewingandbaking.core.ModPotions;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -12,18 +15,17 @@ import net.neoforged.neoforge.common.brewing.IBrewingRecipe;
 
 public final class CoffeeBrewingRecipe implements IBrewingRecipe {
 
-    @SuppressWarnings("deprecation") //Lazy Fuck
     @Override
     public boolean isInput(ItemStack input) {
         if (!input.is(Items.POTION)) return false;
 
         PotionContents pc = input.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-        return pc.potion().isPresent() && pc.potion().get().is(Potions.WATER);
+        return pc.is(Potions.WATER);
     }
 
     @Override
     public boolean isIngredient(ItemStack ingredient) {
-        return ingredient.is(ModItems.ROASTED_COFFEE_BEANS.get());
+        return ingredient.is(ModItems.ROASTED_COFFEE_BEANS);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.pp.brewingandbaking.worldgen;
 
-import com.pp.brewingandbaking.BrewingandBaking;
+import com.pp.brewingandbaking.core.BrewingandBaking;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.placement.*;

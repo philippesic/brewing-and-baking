@@ -1,5 +1,6 @@
 package com.pp.brewingandbaking;
 
+import com.pp.brewingandbaking.core.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
@@ -75,7 +76,7 @@ public class CoffeePlantBlock extends BushBlock { // BushBlock extends bonemeala
         // Harvest when mature
         if (age >= 3) {
             int dropCount = 1 + level.random.nextInt(2); // 1–2 beans
-            popResource(level, pos, new ItemStack(ModItems.COFFEE_BEANS.get(), dropCount));
+            popResource(level, pos, new ItemStack(ModItems.COFFEE_BEANS, dropCount));
             level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
 
             // Reset age

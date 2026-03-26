@@ -1,4 +1,4 @@
-package com.pp.brewingandbaking;
+package com.pp.brewingandbaking.core;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -22,3 +22,4 @@ public final class ModPotions {
             )
     );
 }
+
