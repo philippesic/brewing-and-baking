@@ -1,9 +1,9 @@
 package com.pp.brewingandbaking.compat.jei;
 
-import com.pp.brewingandbaking.BrewingandBaking;
-import com.pp.brewingandbaking.ModBrewing;
-import com.pp.brewingandbaking.ModItems;
-import com.pp.brewingandbaking.ModPotions;
+import com.pp.brewingandbaking.core.BrewingandBaking;
+import com.pp.brewingandbaking.core.ModBrewing;
+import com.pp.brewingandbaking.core.ModItems;
+import com.pp.brewingandbaking.core.ModPotions;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;

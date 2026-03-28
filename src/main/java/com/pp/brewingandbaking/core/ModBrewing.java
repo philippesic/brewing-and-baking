@@ -1,10 +1,11 @@
-package com.pp.brewingandbaking;
+package com.pp.brewingandbaking.core;
 
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import com.pp.brewingandbaking.CoffeeBrewingRecipe;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

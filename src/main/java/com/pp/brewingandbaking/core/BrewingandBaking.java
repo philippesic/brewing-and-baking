@@ -1,5 +1,7 @@
-package com.pp.brewingandbaking;
+package com.pp.brewingandbaking.core;
 
+import com.pp.brewingandbaking.worldgen.ModConfiguredFeatures;
+import com.pp.brewingandbaking.worldgen.ModPlacedFeatures;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -19,6 +21,9 @@ public class BrewingandBaking {
        // NeoForge.EVENT_BUS.addListener(ModBrewing::onRegisterBrewingRecipes);
         net.neoforged.neoforge.common.NeoForge.EVENT_BUS.register(ModBrewing.class);
         modBus.addListener(BrewingandBaking::addCreative);
+
+        ModConfiguredFeatures.CONFIGURED_FEATURES.register(modBus);
+        ModPlacedFeatures.PLACED_FEATURES.register(modBus);
     }
 
 private static void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -60,12 +65,12 @@ private static void addCreative(BuildCreativeModeTabContentsEvent event) {
 
         event.insertAfter(
             new ItemStack(Items.WHEAT),
-            new ItemStack(ModItems.COFFEE_BEANS.get()),
+            new ItemStack(ModItems.COFFEE_BEANS),
             CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
         );
 
         event.insertAfter(
-            new ItemStack(ModItems.COFFEE_BEANS.get()),
+            new ItemStack(ModItems.COFFEE_BEANS),
             new ItemStack(ModItems.ROASTED_COFFEE_BEANS.get()),
             CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
         );
@@ -81,7 +86,7 @@ private static void addCreative(BuildCreativeModeTabContentsEvent event) {
     if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
         event.insertAfter(
             new ItemStack(Items.SWEET_BERRIES),
-            new ItemStack(ModItems.COFFEE_BEANS.get()),
+            new ItemStack(ModItems.COFFEE_BEANS),
             CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
         );
     }

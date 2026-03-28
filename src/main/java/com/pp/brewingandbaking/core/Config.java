@@ -1,4 +1,4 @@
-package com.pp.brewingandbaking;
+package com.pp.brewingandbaking.core;
 
 import java.util.List;
 
