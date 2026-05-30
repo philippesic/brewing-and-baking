@@ -25,3 +25,9 @@ run-data
 
 repo
 .vscode
+.DS_Store
+CLAUDE.md
+.serena
+.claude
+graphify-out/
+source/
