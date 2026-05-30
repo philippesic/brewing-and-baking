@@ -47,7 +47,7 @@ public class CoffeeBeansItem extends Item {
             }
 
             level.setBlock(placePos, plantState, 3);
-            level.playSound(null, placePos, SoundEvents.SWEET_BERRY_BUSH_PLACE, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
+            level.playSound(null, placePos, SoundEvents.SWEET_BERRY_BUSH_PLACE, SoundSource.BLOCKS, 1.0F, 0.8F + level.getRandom().nextFloat() * 0.4F);
 
             ItemStack stack = ctx.getItemInHand();
             if (ctx.getPlayer() == null || !ctx.getPlayer().getAbilities().instabuild) {

@@ -23,7 +23,9 @@ public final class ModPlacedFeatures {
                                     RarityFilter.onAverageOnceEvery(32), // Edit for spawnrate
                                     InSquarePlacement.spread(),
                                     PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                                    BiomeFilter.biome()
+                                    BiomeFilter.biome(),
+                                    CountPlacement.of(2), // patch size (was RandomPatch tries)
+                                    RandomOffsetPlacement.ofTriangle(2, 1) // xzSpread / ySpread
                             )
                     )
             );

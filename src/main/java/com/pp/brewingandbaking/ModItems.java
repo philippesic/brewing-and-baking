@@ -73,8 +73,7 @@ public final class ModItems {
 
     public static final DeferredItem<CoffeeBeansItem> COFFEE_BEANS = ITEMS.registerItem(
             "coffee_beans",
-            CoffeeBeansItem::new,
-            new Item.Properties()
+            CoffeeBeansItem::new
     );
 
     public static final DeferredItem<Item> ROASTED_COFFEE_BEANS = ITEMS.registerSimpleItem(

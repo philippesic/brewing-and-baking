@@ -1,34 +1,12 @@
 {
-  "type": "minecraft:random_patch",
+  "type": "minecraft:simple_block",
   "config": {
-    "tries": 1,
-    "xz_spread": 6,
-    "y_spread": 0,
-    "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "to_place": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "brewingandbaking:coffee_plant",
-              "Properties": { "age": "0" }
-            }
-          }
-        }
-      },
-      "placement": [
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:would_survive",
-            "state": {
-              "Name": "brewingandbaking:coffee_plant",
-              "Properties": { "age": "0" }
-            }
-          }
-        }
-      ]
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "brewingandbaking:coffee_plant",
+        "Properties": { "age": "0" }
+      }
     }
   }
 }

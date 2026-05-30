@@ -1,0 +1,10 @@
+# Exclude decompiled MC source - has its own separate graph in source/graphify-out/
+source/
+source-legacy/
+
+# Build outputs and caches
+build/
+bin/
+run/
+.gradle/
+graphify-out/

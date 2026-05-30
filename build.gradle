@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.137'
+    id 'net.neoforged.moddev' version '2.0.141'
     id 'idea'
 }
 
@@ -26,17 +26,15 @@ base {
     archivesName = mod_id
 }
 
-// Mojang ships Java 21 to end users in 1.21.11, so mods should target Java 21.
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+// Mojang ships Java 25 to end users in 26.1, so mods should target Java 25.
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 neoForge {
     // Specify the version of NeoForge to use.
     version = project.neo_version
 
-    parchment {
-        mappingsVersion = project.parchment_mappings_version
-        minecraftVersion = project.parchment_minecraft_version
-    }
+    // Parchment is no longer needed in 26.1: Mojang removed obfuscation, so official
+    // parameter names are available directly.
 
     // This line is optional. Access Transformers are automatically detected
     // accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
@@ -120,11 +118,11 @@ dependencies {
     // We add the full version to localRuntime, not runtimeOnly, so that we do not publish a dependency on it
     // localRuntime "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
     // JEI (dev only)
-    compileOnly "mezz.jei:jei-1.21.11-common-api:27.3.0.12"
-    compileOnly "mezz.jei:jei-1.21.11-neoforge-api:27.3.0.12"
+    compileOnly "mezz.jei:jei-26.1.2-common-api:29.6.2.31"
+    compileOnly "mezz.jei:jei-26.1.2-neoforge-api:29.6.2.31"
 
     // load JEI in dev runs (so it actually exists at runtime)
-    localRuntime "mezz.jei:jei-1.21.11-neoforge:27.3.0.12"
+    localRuntime "mezz.jei:jei-26.1.2-neoforge:29.6.2.31"
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar

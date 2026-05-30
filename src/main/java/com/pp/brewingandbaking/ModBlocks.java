@@ -9,11 +9,10 @@ public class ModBlocks {
 public static final DeferredRegister.Blocks BLOCKS =
         DeferredRegister.createBlocks(BrewingandBaking.MODID);
 
-@SuppressWarnings("removal") // UGH
 public static final DeferredBlock<CoffeePlantBlock> COFFEE_PLANT = BLOCKS.registerBlock(
         "coffee_plant",
         CoffeePlantBlock::new,
-        BlockBehaviour.Properties.of()
+        props -> props
                 .noCollision()
                 .randomTicks()
                 .instabreak()
