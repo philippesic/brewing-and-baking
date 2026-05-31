@@ -1,14 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "pattern": ["SES", "CCC", "WWW"],
   "key": {
     "W": "minecraft:wheat",
     "C": "brewingandbaking:cherries",
     "S": "minecraft:sugar",
-    "E": "minecraft:#eggs"
+    "E": "#minecraft:eggs"
   },
   "result": {
     "id": "brewingandbaking:cherry_pie",
-    "count": 2
+    "count": 1
   }
 }
