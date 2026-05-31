@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "brewingandbaking:coffee_plant",
+          "properties": { "age": "3" }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "brewingandbaking:coffee_beans",
+          "conditions": [{ "condition": "minecraft:survives_explosion" }]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "brewingandbaking:blocks/coffee_plant"
+}

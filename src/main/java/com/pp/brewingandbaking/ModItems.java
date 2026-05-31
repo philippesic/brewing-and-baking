@@ -14,8 +14,8 @@ public final class ModItems {
     public static final DeferredRegister.Items ITEMS =
             DeferredRegister.createItems(BrewingandBaking.MODID);
 
-    public static final DeferredItem<Item> CHERRY = ITEMS.registerSimpleItem(
-            "cherry",
+    public static final DeferredItem<Item> CHERRIES = ITEMS.registerSimpleItem(
+            "cherries",
             new Item.Properties().food(new FoodProperties.Builder()
                     .nutrition(2)
                     .saturationModifier(0.3f)
@@ -37,5 +37,26 @@ public final class ModItems {
                     .saturationModifier(0.3f)
                     .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 40, 0), 0.5f)
                     .build())
+    );
+
+    public static final DeferredItem<Item> CACAO_NIBS = ITEMS.registerSimpleItem(
+            "cacao_nibs"
+    );
+
+    public static final DeferredItem<Item> CHOCOLATE = ITEMS.registerSimpleItem(
+            "chocolate",
+            new Item.Properties().food(new FoodProperties.Builder()
+                    .nutrition(3)
+                    .saturationModifier(0.35f)
+                    .build())
+    );
+
+    public static final DeferredItem<CoffeeBeansItem> COFFEE_BEANS = ITEMS.registerItem(
+            "coffee_beans",
+            CoffeeBeansItem::new
+    );
+
+    public static final DeferredItem<Item> ROASTED_COFFEE_BEANS = ITEMS.registerSimpleItem(
+            "roasted_coffee_beans"
     );
 }

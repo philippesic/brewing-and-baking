@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "experience": 0,
+  "cookingtime": 100,
+  "ingredient": "brewingandbaking:coffee_beans",
+  "result": {
+    "id": "brewingandbaking:roasted_coffee_beans"
+  }
+}

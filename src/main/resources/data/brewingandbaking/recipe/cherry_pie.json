@@ -3,7 +3,7 @@
   "pattern": ["SES", "CCC", "WWW"],
   "key": {
     "W": { "item": "minecraft:wheat" },
-    "C": { "item": "brewingandbaking:cherry" },
+    "C": { "item": "brewingandbaking:cherries" },
     "S": { "item": "minecraft:sugar" },
     "E": { "item": "minecraft:egg" }
   },

@@ -7,5 +7,5 @@
     },
     { "condition": "minecraft:random_chance", "chance": 0.1 }
   ],
-  "table": "brewingandbaking:inject/cherry_drop"
+  "table": "brewingandbaking:inject/cherries_drop"
 }

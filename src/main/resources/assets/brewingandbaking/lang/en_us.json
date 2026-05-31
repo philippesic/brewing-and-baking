@@ -1,8 +1,14 @@
 {
   "itemGroup.brewingandbaking": "Brewing and Baking",
-  "item.brewingandbaking.cherry": "Cherry",
+  "item.brewingandbaking.cherries": "Cherries",
   "item.brewingandbaking.cherry_pie": "Cherry Pie",
   "item.brewingandbaking.cherry_jam": "Cherry Jam",
+  "item.brewingandbaking.cacao_nibs": "Cacao Nibs",
+  "item.brewingandbaking.chocolate": "Chocolate",
+  "item.brewingandbaking.coffee_beans": "Coffee Beans",
+  "item.brewingandbaking.roasted_coffee_beans": "Roasted Coffee Beans",
+  "block.brewingandbaking.coffee_plant": "Coffee Plant",
+  "item.minecraft.potion.effect.coffee": "Coffee",
 
   "brewingandbaking.configuration.title": "Brewing and Baking Configs",
   "brewingandbaking.configuration.section.brewingandbaking.common.toml": "Brewing and Baking Configs",

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "ingredient": "minecraft:cocoa_beans",
+  "result": {
+    "id": "brewingandbaking:cacao_nibs"
+  }
+}

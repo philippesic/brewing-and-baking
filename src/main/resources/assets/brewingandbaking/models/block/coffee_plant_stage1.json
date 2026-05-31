@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "render_type": "cutout",
+  "textures": {
+    "cross": "brewingandbaking:block/coffee_plant_stage1"
+  }
+}

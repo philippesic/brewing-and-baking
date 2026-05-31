@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "brewingandbaking:cacao_nibs" },
+    { "item": "minecraft:milk_bucket" },
+    { "item": "minecraft:sugar" }
+  ],
+  "result": {
+    "id": "brewingandbaking:chocolate",
+    "count": 4
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "feature": "brewingandbaking:coffee_plant_patch",
+  "placement": [
+    { "type": "minecraft:rarity_filter", "chance": 32 },
+    { "type": "minecraft:count", "count": 2 },
+    { "type": "minecraft:in_square" },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": { "type": "minecraft:constant", "value": 3 },
+      "y_spread": { "type": "minecraft:constant", "value": 0 }
+    },
+    { "type": "minecraft:heightmap", "heightmap": "WORLD_SURFACE_WG" },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": { "Name": "brewingandbaking:coffee_plant" }
+      }
+    },
+    { "type": "minecraft:biome" }
+  ]
+}
