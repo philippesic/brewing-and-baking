@@ -16,6 +16,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.brewing.IBrewingRecipe;
 import net.neoforged.neoforge.event.brewing.PotionBrewEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
+import org.jspecify.annotations.NonNull;
 
 @EventBusSubscriber(modid = BrewingandBaking.MODID)
 public final class ModBrewing {
@@ -118,7 +119,7 @@ private static boolean removeContainerMixReflect(PotionBrewing.Builder builder, 
         ItemStack reagentStack = new ItemStack(reagent);
         boolean removedAny = false;
 
-        Class<?> mixClass = mixes.get(0).getClass();
+        Class<?> mixClass = mixes.getFirst().getClass();
         var mFrom = mixClass.getMethod("from");
         var mTo = mixClass.getMethod("to");
         var mIngredient = mixClass.getMethod("ingredient");
@@ -164,7 +165,7 @@ private static boolean removeContainerMixReflect(PotionBrewing.Builder builder, 
         }
 
         @Override
-        public ItemStack getOutput(ItemStack input, ItemStack ingredient) {
+        public @NonNull ItemStack getOutput(ItemStack input, ItemStack ingredient) {
             if (!isInput(input) || !isIngredient(ingredient)) return ItemStack.EMPTY;
 
             // Block Brew Timer
