@@ -4,6 +4,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.Block;
 
 public class ModBlocks {
 public static final DeferredRegister.Blocks BLOCKS =
@@ -18,5 +19,14 @@ public static final DeferredBlock<CoffeePlantBlock> COFFEE_PLANT = BLOCKS.regist
                 .instabreak()
                 .sound(SoundType.SWEET_BERRY_BUSH)
 );
-};
+
+    public static final DeferredBlock<Block> COOKING_POT = BLOCKS.registerBlock(
+            "cooking_pot",
+            Block::new,
+            props -> props
+                    .strength(2.0f, 3.0f)
+                    .sound(SoundType.COPPER)
+                    .noOcclusion()
+    );
+}
 

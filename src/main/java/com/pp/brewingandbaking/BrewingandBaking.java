@@ -85,5 +85,13 @@ private static void addCreative(BuildCreativeModeTabContentsEvent event) {
             CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
         );
     }
+
+    // Functional Blocks Tab
+    if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+        event.accept(
+                new ItemStack(ModItems.COOKING_POT.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+        );
+    }
 }
 }
