@@ -9,16 +9,15 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.neoforge.common.brewing.IBrewingRecipe;
+import org.jspecify.annotations.NonNull;
 
 public final class CoffeeBrewingRecipe implements IBrewingRecipe {
-
-    @SuppressWarnings("deprecation") //Lazy Fuck
     @Override
     public boolean isInput(ItemStack input) {
         if (!input.is(Items.POTION)) return false;
 
         PotionContents pc = input.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-        return pc.potion().isPresent() && pc.potion().get().is(Potions.WATER);
+        return pc.potion().isPresent() && pc.potion().get().is(Potions.WATER.key());
     }
 
     @Override
@@ -27,7 +26,7 @@ public final class CoffeeBrewingRecipe implements IBrewingRecipe {
     }
 
     @Override
-    public ItemStack getOutput(ItemStack input, ItemStack ingredient) {
+    public @NonNull ItemStack getOutput(@NonNull ItemStack input, @NonNull ItemStack ingredient) {
         if (!isInput(input) || !isIngredient(ingredient)) return ItemStack.EMPTY;
 
         ItemStack out = new ItemStack(Items.POTION);
