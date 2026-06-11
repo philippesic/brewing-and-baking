@@ -11,6 +11,7 @@ import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.world.item.BlockItem;
 
 public final class ModItems {
     private ModItems() {}
@@ -78,5 +79,9 @@ public final class ModItems {
 
     public static final DeferredItem<Item> ROASTED_COFFEE_BEANS = ITEMS.registerSimpleItem(
             "roasted_coffee_beans"
+    );
+
+    public static final DeferredItem<BlockItem> COOKING_POT = ITEMS.registerSimpleBlockItem(
+            ModBlocks.COOKING_POT
     );
 }
