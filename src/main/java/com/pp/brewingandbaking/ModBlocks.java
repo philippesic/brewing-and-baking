@@ -1,5 +1,6 @@
 package com.pp.brewingandbaking;
 
+import com.pp.brewingandbaking.block.CookingPotBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -22,7 +23,7 @@ public static final DeferredBlock<CoffeePlantBlock> COFFEE_PLANT = BLOCKS.regist
 
     public static final DeferredBlock<Block> COOKING_POT = BLOCKS.registerBlock(
             "cooking_pot",
-            Block::new,
+            CookingPotBlock::new,
             props -> props
                     .strength(2.0f, 3.0f)
                     .sound(SoundType.COPPER)
