@@ -18,6 +18,7 @@ public class BrewingandBaking {
         ModBlocks.BLOCKS.register(modBus);
        // NeoForge.EVENT_BUS.addListener(ModBrewing::onRegisterBrewingRecipes);
         net.neoforged.neoforge.common.NeoForge.EVENT_BUS.register(ModBrewing.class);
+        net.neoforged.neoforge.common.NeoForge.EVENT_BUS.register(HungerSystemHandler.class);
         modBus.addListener(BrewingandBaking::addCreative);
     }
 
