@@ -9,6 +9,7 @@
   "item.brewingandbaking.roasted_coffee_beans": "Roasted Coffee Beans",
   "item.minecraft.potion.effect.coffee": "Coffee",
   "block.brewingandbaking.cooking_pot": "Cooking Pot",
+  "container.brewingandbaking.cooking_pot": "Cooking Pot",
 
   "brewingandbaking.configuration.title": "Brewing and Baking Configs",
   "brewingandbaking.configuration.section.brewingandbaking.common.toml": "Brewing and Baking Configs",
