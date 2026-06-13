@@ -109,11 +109,20 @@ public final class FoodPoints {
      * awarded outright; the fractional part is a chance for one more 1/2 heart.
      */
     public static float rollHealth(double points, RandomSource random) {
-        int halfHearts = (int) Math.floor(points);
-        double fraction = points - halfHearts;
-        if (fraction > 0.0 && random.nextDouble() < fraction) {
+        int halfHearts = solidHalfHearts(points);
+        if (hasChanceHalfHeart(points) && random.nextDouble() < (points - halfHearts)) {
             halfHearts++;
         }
         return halfHearts * HEALTH_PER_HALF_HEART;
+    }
+
+    /** Guaranteed 1/2 hearts (the whole part of the food point value). */
+    public static int solidHalfHearts(double points) {
+        return (int) Math.floor(points);
+    }
+
+    /** Whether there is a fractional 1/2 heart awarded by chance. */
+    public static boolean hasChanceHalfHeart(double points) {
+        return points - Math.floor(points) > 0.0;
     }
 }

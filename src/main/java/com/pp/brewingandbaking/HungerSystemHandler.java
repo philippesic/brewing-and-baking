@@ -29,8 +29,8 @@ public final class HungerSystemHandler {
     /** Pending health to drip into each player, keyed by UUID (server-side). */
     private static final Map<UUID, Float> PENDING_HEAL = new HashMap<>();
 
-    /** Drip cadence: heal {@link #HEAL_PER_TICK_STEP} HP every this many ticks. */
-    private static final int HEAL_INTERVAL_TICKS = 5;
+    /** Drip cadence: heal {@link #HEAL_PER_TICK_STEP} HP (half a heart) every this many ticks (0.5s). */
+    private static final int HEAL_INTERVAL_TICKS = 10;
     private static final float HEAL_PER_TICK_STEP = 1.0F;
 
     /**
@@ -39,6 +39,12 @@ public final class HungerSystemHandler {
      * (6) thresholds. Natural regen is disabled separately via the gamerule.
      */
     private static final int PINNED_FOOD_LEVEL = 19;
+
+    /** Below this health (3 hearts), the player is exhausted and cannot sprint. */
+    private static final float EXHAUSTION_HEALTH_THRESHOLD = 6.0F;
+
+    /** Food level that trips vanilla's sprint lockout ({@code hasEnoughFood()} requires {@code > 6}). */
+    private static final int EXHAUSTED_FOOD_LEVEL = 6;
 
     @SubscribeEvent
     public static void onServerStarted(ServerStartedEvent event) {
@@ -77,7 +83,8 @@ public final class HungerSystemHandler {
 
     private static void neutralizeHunger(ServerPlayer player) {
         FoodData food = player.getFoodData();
-        food.setFoodLevel(PINNED_FOOD_LEVEL);
+        boolean exhausted = player.getHealth() < EXHAUSTION_HEALTH_THRESHOLD;
+        food.setFoodLevel(exhausted ? EXHAUSTED_FOOD_LEVEL : PINNED_FOOD_LEVEL);
         food.setSaturation(20.0F);
     }
 
