@@ -91,8 +91,12 @@ public final class FoodPoints {
         VALUES.put(Items.ENCHANTED_GOLDEN_APPLE, 3.0);
     }
 
-    /** Food point value for a stack: explicit table entry, else scaled vanilla nutrition, else 0. */
+    /** Food point value for a stack: per-stack component, else table entry, else scaled vanilla nutrition, else 0. */
     public static double pointsFor(ItemStack stack) {
+        Double assigned = stack.get(ModDataComponents.FOOD_POINTS.get());
+        if (assigned != null) {
+            return assigned;
+        }
         Double explicit = VALUES.get(stack.getItem());
         if (explicit != null) {
             return explicit;

@@ -13,7 +13,9 @@ public class BrewingandBaking {
     public static final String MODID = "brewingandbaking";
 
     public BrewingandBaking(IEventBus modBus) {
+        ModDataComponents.COMPONENTS.register(modBus);
         ModItems.ITEMS.register(modBus);
+        ModMeals.ITEMS.register(modBus);
         ModPotions.POTIONS.register(modBus);
         ModBlocks.BLOCKS.register(modBus);
        // NeoForge.EVENT_BUS.addListener(ModBrewing::onRegisterBrewingRecipes);
@@ -54,6 +56,10 @@ private static void addCreative(BuildCreativeModeTabContentsEvent event) {
             new ItemStack(ModItems.CHOCOLATE.get()),
             CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
         );
+
+        for (var meal : ModMeals.ALL) {
+            event.accept(new ItemStack(meal.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        }
     }
 
     // Ingredients tab
