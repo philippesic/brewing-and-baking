@@ -1,0 +1,12 @@
+{
+  "type": "brewingandbaking:cooking",
+  "ingredients": [
+    "brewingandbaking:cooking/test_fruit",
+    "brewingandbaking:cooking/test_fruit"
+  ],
+  "result": {
+    "id": "minecraft:pumpkin_pie",
+    "count": 1
+  },
+  "cookingtime": 80
+}

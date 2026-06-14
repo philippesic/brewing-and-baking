@@ -1,5 +1,6 @@
 package com.pp.brewingandbaking.inventory;
 
+import com.pp.brewingandbaking.cooking.CookingIngredients;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -10,8 +11,9 @@ public class CookingPotFoodSlot extends Slot {
         super(container, slot, x, y);
     }
 
+    @Override
     public boolean mayPlace(final ItemStack itemStack) {
-        return true;
+        return CookingIngredients.isCookable(itemStack.getItem());
     }
 
 }

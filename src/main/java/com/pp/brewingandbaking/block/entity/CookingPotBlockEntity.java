@@ -1,9 +1,13 @@
 package com.pp.brewingandbaking.block.entity;
 
 import com.pp.brewingandbaking.ModBlockEntityTypes;
+import com.pp.brewingandbaking.cooking.CookingPotRecipeBook;
 import com.pp.brewingandbaking.inventory.CookingPotMenu;
+import com.pp.brewingandbaking.recipe.CookingPotRecipe;
+import com.pp.brewingandbaking.recipe.CookingPotRecipeInput;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,6 +21,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 public class CookingPotBlockEntity extends BaseContainerBlockEntity {
 
     private static final Component DEFAULT_NAME = Component.translatable("container.brewingandbaking.cooking_pot");
@@ -24,6 +32,7 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
     protected final ContainerData dataAccess;
     public int heated;
     public int cooking_duration;
+    public int cook_total;
 
     public CookingPotBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.COOKING_POT_BLOCK_ENTITY.get(), pos, state);
@@ -34,7 +43,10 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
                 if (dataId == 0) {
                     return heated;
                 }
-                return cooking_duration;
+                if (dataId == 1) {
+                    return cooking_duration;
+                }
+                return cook_total;
             }
 
             public void set(final int dataId, final int value) {
@@ -44,11 +56,14 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
                 if (dataId == 1) {
                     cooking_duration = value;
                 }
+                if (dataId == 2) {
+                    cook_total = value;
+                }
 
             }
 
             public int getCount() {
-                return 2;
+                return 3;
             }
         };
 
@@ -61,6 +76,7 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
         ContainerHelper.loadAllItems(input, items);
         heated = input.getShortOr("heated", (short) 0);
         cooking_duration = input.getShortOr("cooking_duration", (short) 0);
+        cook_total = input.getShortOr("cook_total", (short) 0);
 
     }
 
@@ -69,6 +85,7 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
         super.saveAdditional(output);
         output.putShort("heated", (short) heated);
         output.putShort("cooking_duration", (short) cooking_duration);
+        output.putShort("cook_total", (short) cook_total);
         ContainerHelper.saveAllItems(output, items);
     }
 
@@ -97,18 +114,66 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
         return new CookingPotMenu(containerId, inventory, this, dataAccess);
     }
 
-    private static int getNumNonEmptyStacks(NonNullList<ItemStack> items) {
-        int numNonEmptyStacks = 0;
-        for (ItemStack item : items) {
-            if (item.isEmpty()) {
-                numNonEmptyStacks++;
+    public static void serverTick(Level level, BlockPos pos, BlockState state, CookingPotBlockEntity be) {
+        if (!(level instanceof ServerLevel server)) {
+            return;
+        }
+
+        be.heated = level.getBlockState(pos.below()).is(Blocks.LAVA_CAULDRON) ? 1 : 0;
+
+        int prevDuration = be.cooking_duration;
+        int prevTotal = be.cook_total;
+        boolean itemsChanged = false;
+
+        List<ItemStack> inputs = new ArrayList<>(be.items.size() - 1);
+        for (int slot = 1; slot < be.items.size(); slot++) {
+            inputs.add(be.items.get(slot));
+        }
+
+        Optional<CookingPotRecipe> match = CookingPotRecipeBook.find(server, new CookingPotRecipeInput(inputs));
+        if (match.isEmpty()) {
+            be.cooking_duration = 0;
+            be.cook_total = 0;
+        } else {
+            CookingPotRecipe recipe = match.get();
+            be.cook_total = recipe.cookingTime();
+
+            if (be.heated == 1) {
+                be.cooking_duration++;
+            }
+
+            if (be.cooking_duration >= recipe.cookingTime() && canAccept(be.items.get(0), recipe.result())) {
+                for (int slot = 1; slot < be.items.size(); slot++) {
+                    ItemStack ingredient = be.items.get(slot);
+                    if (!ingredient.isEmpty()) {
+                        ingredient.shrink(1);
+                    }
+                }
+                ItemStack output = be.items.get(0);
+                ItemStack result = recipe.result();
+                if (output.isEmpty()) {
+                    be.items.set(0, result.copy());
+                } else {
+                    output.grow(result.getCount());
+                }
+                be.cooking_duration = 0;
+                itemsChanged = true;
             }
         }
-        return numNonEmptyStacks;
+
+        if (itemsChanged || be.cooking_duration != prevDuration || be.cook_total != prevTotal) {
+            be.setChanged();
+        }
     }
 
-    public static void serverTick(Level level, BlockPos pos, BlockState state, CookingPotBlockEntity be) {
-        be.heated = level.getBlockState(pos.below()).is(Blocks.LAVA_CAULDRON) ? 1 : 0;
+    private static boolean canAccept(ItemStack output, ItemStack result) {
+        if (output.isEmpty()) {
+            return true;
+        }
+        if (!ItemStack.isSameItemSameComponents(output, result)) {
+            return false;
+        }
+        return output.getCount() + result.getCount() <= output.getMaxStackSize();
     }
 
 }

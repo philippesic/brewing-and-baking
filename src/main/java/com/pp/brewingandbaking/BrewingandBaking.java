@@ -18,9 +18,13 @@ public class BrewingandBaking {
         ModBlocks.BLOCKS.register(modBus);
         ModBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modBus);
         ModMenuTypes.MENU_TYPES.register(modBus);
+        ModRecipes.RECIPE_TYPES.register(modBus);
+        ModRecipes.RECIPE_SERIALIZERS.register(modBus);
         // NeoForge.EVENT_BUS.addListener(ModBrewing::onRegisterBrewingRecipes);
         net.neoforged.neoforge.common.NeoForge.EVENT_BUS.register(ModBrewing.class);
         net.neoforged.neoforge.common.NeoForge.EVENT_BUS.register(HungerSystemHandler.class);
+        net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(
+                com.pp.brewingandbaking.cooking.CookingIngredients::onTagsUpdated);
         modBus.addListener(BrewingandBaking::addCreative);
     }
 

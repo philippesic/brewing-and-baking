@@ -1,0 +1,12 @@
+{
+  "type": "brewingandbaking:cooking",
+  "ingredients": [
+    "brewingandbaking:cooking/test_starch",
+    "brewingandbaking:cooking/test_meat"
+  ],
+  "result": {
+    "id": "minecraft:cooked_beef",
+    "count": 1
+  },
+  "cookingtime": 100
+}

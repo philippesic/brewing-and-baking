@@ -2,6 +2,7 @@ package com.pp.brewingandbaking.inventory;
 
 import com.pp.brewingandbaking.ModMenuTypes;
 import com.pp.brewingandbaking.block.entity.CookingPotBlockEntity;
+import com.pp.brewingandbaking.cooking.CookingIngredients;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
@@ -18,29 +19,25 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 public class CookingPotMenu extends AbstractContainerMenu {
     private final Container container;
     protected final Level level;
-    private final CookingPotBlockEntity be;
     private final ContainerData data;
-    private final BlockPos pos;
 
     public CookingPotMenu(int containerId, Inventory playerInv, FriendlyByteBuf buf) {
-        this(containerId, playerInv, getBE(playerInv, buf), new SimpleContainerData(6));
+        this(containerId, playerInv, getBE(playerInv, buf), new SimpleContainerData(3));
     }
 
     public CookingPotMenu(int containerId, Inventory playerInv, CookingPotBlockEntity be, ContainerData data) {
         super(ModMenuTypes.COOKING_POT_MENU.get(), containerId);
-        this.be = be;
-        this.pos = be.getBlockPos();
         this.container = be;
         this.data = data;
         checkContainerSize(container, 6);
-        checkContainerDataCount(data, 2);
+        checkContainerDataCount(data, 3);
         this.level = playerInv.player.level();
-        this.addSlot(new CookingPotOutSlot(container, 0, 80, 60));
+        this.addSlot(new CookingPotOutSlot(container, 0, 80, 60));   // start input
         this.addSlot(new CookingPotFoodSlot(container, 1, 30, 19));
         this.addSlot(new CookingPotFoodSlot(container, 2, 40, 19));
         this.addSlot(new CookingPotFoodSlot(container, 3, 50, 19));
-        this.addSlot(new CookingPotFoodSlot(container, 4, 60, 19));
-        this.addSlot(new CookingPotFoodSlot(container, 5, 70, 19));
+        this.addSlot(new CookingPotFoodSlot(container, 4, 60, 19));  // end input
+        this.addSlot(new CookingPotFoodSlot(container, 5, 70, 19));  // output slot
         this.addStandardInventorySlots(playerInv, 8, 84);
         this.addDataSlots(data);
     }
@@ -52,19 +49,66 @@ public class CookingPotMenu extends AbstractContainerMenu {
         throw new IllegalStateException("Expected CookingPotBlockEnity at " + pos + ", got: " + e);
     }
 
+    private static final int OUTPUT_SLOT = 0;
+    private static final int INPUT_START = 1;
+    private static final int INPUT_END = 6;
+    private static final int PLAYER_START = 6;
+    private static final int HOTBAR_START = 33;
+    private static final int PLAYER_END = 42;
+
     @Override
     public ItemStack quickMoveStack(Player player, int slotIndex) {
-        ItemStack clicked = ItemStack.EMPTY;
+        ItemStack result = ItemStack.EMPTY;
         Slot slot = this.slots.get(slotIndex);
         if (slot.hasItem()) {
             ItemStack stack = slot.getItem();
-            clicked = stack.copy();
-            if (slotIndex != 0 && slotIndex != 1) {
-                slot.onTake(player, stack);
+            result = stack.copy();
+            if (slotIndex == OUTPUT_SLOT) {
+                if (!this.moveItemStackTo(stack, PLAYER_START, PLAYER_END, true)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (slotIndex < INPUT_END) {
+                if (!this.moveItemStackTo(stack, PLAYER_START, PLAYER_END, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else {
+                boolean moved = CookingIngredients.isCookable(stack.getItem())
+                        && this.moveItemStackTo(stack, INPUT_START, INPUT_END, false);
+                if (!moved) {
+                    if (slotIndex < HOTBAR_START) {
+                        if (!this.moveItemStackTo(stack, HOTBAR_START, PLAYER_END, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else if (!this.moveItemStackTo(stack, PLAYER_START, HOTBAR_START, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
             }
-        }
-        return clicked;
 
+            if (stack.isEmpty()) {
+                slot.setByPlayer(ItemStack.EMPTY);
+            } else {
+                slot.setChanged();
+            }
+            if (stack.getCount() == result.getCount()) {
+                return ItemStack.EMPTY;
+            }
+            slot.onTake(player, stack);
+        }
+        return result;
+    }
+
+    public boolean isHeated() {
+        return this.data.get(0) != 0;
+    }
+
+    /** Cooking progress scaled to {@code pixels} (0 when nothing is cooking). */
+    public int getCookProgressScaled(int pixels) {
+        int total = this.data.get(2);
+        if (total <= 0) {
+            return 0;
+        }
+        return Math.min(this.data.get(1) * pixels / total, pixels);
     }
 
     @Override
