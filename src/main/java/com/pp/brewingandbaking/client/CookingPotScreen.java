@@ -13,9 +13,9 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotMenu> {
     private static final Identifier BG_TEXTURE =
             Identifier.fromNamespaceAndPath("brewingandbaking", "textures/gui/cookingpot.png");
     private static final Identifier FUEL_ON =
-            Identifier.fromNamespaceAndPath("brewingandbaking", "textures/gui/fuel_on.png");
+            Identifier.fromNamespaceAndPath("brewingandbaking", "container/cookingpot/fuel_on");
     private static final Identifier COOK_PROGRESS =
-            Identifier.fromNamespaceAndPath("brewingandbaking", "textures/gui/cook_progress.png");
+            Identifier.fromNamespaceAndPath("brewingandbaking", "container/cookingpot/cook_progress");
 
     public CookingPotScreen(CookingPotMenu menu, Inventory playerInv, Component title) {
         super(menu, playerInv, title);
@@ -25,16 +25,16 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotMenu> {
     public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
         graphics.blit(RenderPipelines.GUI_TEXTURED, BG_TEXTURE, leftPos, topPos, 0.0F, 0.0F, imageWidth, imageHeight, 256, 256);
 
-        // Draw fuel indicator when heated
         if (menu.isHeated()) {
-            graphics.blit(RenderPipelines.GUI_TEXTURED, FUEL_ON,
-                    leftPos + 112, topPos + 62, 0, 0, 16, 16, 16, 16);
+            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, FUEL_ON,
+                    16, 16, 0, 0,
+                    leftPos + 112, topPos + 62, 16, 16);
         }
 
-        // Draw cook progress arrow scaled to current progress
         int progress = menu.getCookProgressScaled(24);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, COOK_PROGRESS,
-                leftPos + 108, topPos + 35, 0, 0, progress, 16, 24, 16);
+        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, COOK_PROGRESS,
+                24, 16, 0, 0,
+                leftPos + 108, topPos + 34, progress, 16);
     }
 
     @Override

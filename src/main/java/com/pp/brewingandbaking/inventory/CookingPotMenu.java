@@ -32,12 +32,12 @@ public class CookingPotMenu extends AbstractContainerMenu {
         checkContainerSize(container, 6);
         checkContainerDataCount(data, 3);
         this.level = playerInv.player.level();
-        this.addSlot(new CookingPotOutSlot(container, 0, 144, 35));   // Output slot
-        this.addSlot(new CookingPotFoodSlot(container, 1, 12, 35));  // start input
+        this.addSlot(new CookingPotOutSlot(container, 0, 144, 35));
+        this.addSlot(new CookingPotFoodSlot(container, 1, 12, 35));
         this.addSlot(new CookingPotFoodSlot(container, 2, 30, 35));
         this.addSlot(new CookingPotFoodSlot(container, 3, 48, 35));
         this.addSlot(new CookingPotFoodSlot(container, 4, 66, 35));
-        this.addSlot(new CookingPotFoodSlot(container, 5, 84, 35));  // end input
+        this.addSlot(new CookingPotFoodSlot(container, 5, 84, 35));
         this.addStandardInventorySlots(playerInv, 8, 84);
         this.addDataSlots(data);
     }
