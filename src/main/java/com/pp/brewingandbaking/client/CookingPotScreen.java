@@ -8,33 +8,33 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 
-
 public class CookingPotScreen extends AbstractContainerScreen<CookingPotMenu> {
+
+    private static final Identifier BG_TEXTURE =
+            Identifier.fromNamespaceAndPath("brewingandbaking", "textures/gui/cookingpot.png");
+    private static final Identifier FUEL_ON =
+            Identifier.fromNamespaceAndPath("brewingandbaking", "container/cookingpot/fuel_on");
+    private static final Identifier COOK_PROGRESS =
+            Identifier.fromNamespaceAndPath("brewingandbaking", "container/cookingpot/cook_progress");
+
     public CookingPotScreen(CookingPotMenu menu, Inventory playerInv, Component title) {
         super(menu, playerInv, title);
     }
-    private static final Identifier BG_TEXTURE =
-            Identifier.fromNamespaceAndPath("brewingandbaking", "textures/gui/cookingpot.png");
 
     @Override
     public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
         graphics.blit(RenderPipelines.GUI_TEXTURED, BG_TEXTURE, leftPos, topPos, 0.0F, 0.0F, imageWidth, imageHeight, 256, 256);
 
-        // Progress indicator. Drawn as flat rects so it works before the GUI texture has dedicated
-        // sprites. TODO: replace these fills with blits from cookingpot.png (a flame sprite + a
-        // progress-arrow sprite) once the art is added, using menu.getCookProgressScaled for the arrow.
-        int barX = leftPos + 78;
-        int barY = topPos + 40;
-        int barW = 24;
-        int barH = 6;
-        graphics.fill(barX, barY, barX + barW, barY + barH, 0xFF3A3A3A);
-        int progress = menu.getCookProgressScaled(barW);
-        if (progress > 0) {
-            graphics.fill(barX, barY, barX + progress, barY + barH, 0xFFE08A1E);
-        }
         if (menu.isHeated()) {
-            graphics.fill(barX - 11, barY - 1, barX - 3, barY + barH + 1, 0xFFFF5520);
+            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, FUEL_ON,
+                    16, 16, 0, 0,
+                    leftPos + 112, topPos + 62, 16, 16);
         }
+
+        int progress = menu.getCookProgressScaled(24);
+        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, COOK_PROGRESS,
+                24, 16, 0, 0,
+                leftPos + 108, topPos + 34, progress, 16);
     }
 
     @Override
