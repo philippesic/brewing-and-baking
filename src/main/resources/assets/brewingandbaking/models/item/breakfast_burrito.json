@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "brewingandbaking:item/breakfast_burrito"
+    "layer0": "brewingandbaking:item/breakfast_burrito/breakfast_burrito"
   }
 }

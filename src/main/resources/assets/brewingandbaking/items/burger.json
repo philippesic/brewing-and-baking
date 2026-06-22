@@ -1,6 +1,22 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "brewingandbaking:item/burger"
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "brewingandbaking:luxury_points",
+    "cases": [
+      {
+        "when": [1, 2],
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/burger/specked" }
+      },
+      {
+        "when": [3, 4],
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/burger/dusted" }
+      },
+      {
+        "when": 5,
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/burger/plated" }
+      }
+    ],
+    "fallback": { "type": "minecraft:model", "model": "brewingandbaking:item/burger" }
   }
 }

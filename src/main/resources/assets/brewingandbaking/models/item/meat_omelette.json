@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "brewingandbaking:item/meat_omelette"
+    "layer0": "brewingandbaking:item/meat_omelette/meat_omelette"
   }
 }

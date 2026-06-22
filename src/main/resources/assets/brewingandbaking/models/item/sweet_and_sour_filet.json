@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "brewingandbaking:item/sweet_and_sour_filet"
+    "layer0": "brewingandbaking:item/sweet_and_sour_filet/sweet_and_sour_filet"
   }
 }

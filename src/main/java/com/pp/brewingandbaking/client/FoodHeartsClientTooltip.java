@@ -12,10 +12,12 @@ import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent
 public final class FoodHeartsClientTooltip implements ClientTooltipComponent {
     private final int solidHalves;
     private final boolean chanceHalf;
+    private final boolean poisonous;
 
     public FoodHeartsClientTooltip(FoodHeartsTooltip data) {
         this.solidHalves = data.solidHalves();
         this.chanceHalf = data.chanceHalf();
+        this.poisonous = data.poisonous();
     }
 
     private int totalSlots() {
@@ -39,10 +41,10 @@ public final class FoodHeartsClientTooltip implements ClientTooltipComponent {
             FoodHearts.drawContainer(graphics, x, y, i);
         }
         for (int slot = 0; slot < solidHalves; slot++) {
-            FoodHearts.drawHalfSlot(graphics, x, y, slot, 1.0F);
+            FoodHearts.drawHalfSlot(graphics, x, y, slot, 1.0F, poisonous);
         }
         if (chanceHalf) {
-            FoodHearts.drawHalfSlot(graphics, x, y, solidHalves, FoodHearts.pulseAlpha(0.2F, 1.0F));
+            FoodHearts.drawHalfSlot(graphics, x, y, solidHalves, FoodHearts.pulseAlpha(0.2F, 1.0F), poisonous);
         }
     }
 }

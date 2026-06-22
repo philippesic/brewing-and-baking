@@ -1,0 +1,19 @@
+package com.pp.brewingandbaking.inventory;
+
+import com.pp.brewingandbaking.FoodTagRegistry;
+import net.minecraft.world.Container;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+
+public class CookingPotFoodSlot extends Slot {
+
+    public CookingPotFoodSlot(final Container container, int slot, int x, int y) {
+        super(container, slot, x, y);
+    }
+
+    @Override
+    public boolean mayPlace(final ItemStack itemStack) {
+        return FoodTagRegistry.INSTANCE.isCookable(itemStack.getItem());
+    }
+
+}

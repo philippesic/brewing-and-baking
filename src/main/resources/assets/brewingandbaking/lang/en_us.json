@@ -9,6 +9,7 @@
   "item.brewingandbaking.roasted_coffee_beans": "Roasted Coffee Beans",
   "item.minecraft.potion.effect.coffee": "Coffee",
   "block.brewingandbaking.cooking_pot": "Cooking Pot",
+  "container.brewingandbaking.cooking_pot": "Cooking Pot",
   "brewingandbaking.configuration.title": "Brewing and Baking Configs",
   "brewingandbaking.configuration.section.brewingandbaking.common.toml": "Brewing and Baking Configs",
   "brewingandbaking.configuration.section.brewingandbaking.common.toml.title": "Brewing and Baking Configs",
@@ -54,5 +55,8 @@
   "item.brewingandbaking.sweet_roll": "Sweet Roll",
   "item.brewingandbaking.bread_pudding": "Bread Pudding",
   "item.brewingandbaking.cake": "Cake",
-  "item.brewingandbaking.poisonous_porridge": "Poisonous Porridge"
+  "item.brewingandbaking.poisonous_porridge": "Poisonous Porridge",
+  "meal.brewingandbaking.gold_specked": "Gold Specked %s",
+  "meal.brewingandbaking.gold_dusted": "Gold Dusted %s",
+  "meal.brewingandbaking.gold_plated": "Gold Plated %s"
 }

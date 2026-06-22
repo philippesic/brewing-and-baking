@@ -1,5 +1,6 @@
 package com.pp.brewingandbaking;
 
+import com.pp.brewingandbaking.block.CookingPotBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;

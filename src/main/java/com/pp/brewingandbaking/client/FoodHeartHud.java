@@ -48,11 +48,13 @@ public final class FoodHeartHud {
     @SubscribeEvent
     public static void appendFoodTooltip(RenderTooltipEvent.GatherComponents event) {
         double points = FoodPoints.pointsFor(event.getItemStack());
-        if (points <= 0.0) {
+        if (points == 0.0) {
             return;
         }
+        boolean poisonous = points < 0.0;
+        double absPoints = Math.abs(points);
         event.getTooltipElements().add(Either.right(
-                new FoodHeartsTooltip(FoodPoints.solidHalfHearts(points), FoodPoints.hasChanceHalfHeart(points))));
+                new FoodHeartsTooltip(FoodPoints.solidHalfHearts(absPoints), FoodPoints.hasChanceHalfHeart(absPoints), poisonous)));
     }
 
     @SubscribeEvent
@@ -69,38 +71,52 @@ public final class FoodHeartHud {
             return;
         }
         double points = FoodPoints.pointsFor(food);
-        if (points <= 0.0) {
+        if (points == 0.0) {
             return;
         }
 
+        boolean poisonous = points < 0.0;
+        double absPoints = Math.abs(points);
+        int previewHalves = FoodPoints.solidHalfHearts(absPoints) + (FoodPoints.hasChanceHalfHeart(absPoints) ? 1 : 0);
+
         int maxHalves = Mth.ceil(player.getMaxHealth());
         int currentHalves = Mth.ceil(player.getHealth());
-        if (currentHalves >= maxHalves) {
-            return;
-        }
 
         GuiGraphicsExtractor graphics = event.getGuiGraphics();
         int baseX = graphics.guiWidth() / 2 - 91;
         int y = graphics.guiHeight() - HEALTH_ROW_Y_FROM_BOTTOM;
-
         float alpha = FoodHearts.pulseAlpha(GHOST_MIN_ALPHA, GHOST_MAX_ALPHA);
-        int previewHalves = FoodPoints.solidHalfHearts(points) + (FoodPoints.hasChanceHalfHeart(points) ? 1 : 0);
-        for (int k = 0; k < previewHalves; k++) {
-            int slot = currentHalves + k;
-            if (slot >= maxHalves || slot / 2 >= MAX_HEART_COLUMNS) {
-                break;
+
+        if (poisonous) {
+            int startSlot = Math.max(0, currentHalves - previewHalves);
+            for (int k = 0; k < previewHalves; k++) {
+                int slot = startSlot + k;
+                if (slot >= currentHalves || slot / 2 >= MAX_HEART_COLUMNS) {
+                    break;
+                }
+                FoodHearts.drawHalfSlot(graphics, baseX, y, slot, alpha, true);
             }
-            FoodHearts.drawHalfSlot(graphics, baseX, y, slot, alpha);
+        } else {
+            if (currentHalves >= maxHalves) {
+                return;
+            }
+            for (int k = 0; k < previewHalves; k++) {
+                int slot = currentHalves + k;
+                if (slot >= maxHalves || slot / 2 >= MAX_HEART_COLUMNS) {
+                    break;
+                }
+                FoodHearts.drawHalfSlot(graphics, baseX, y, slot, alpha);
+            }
         }
     }
 
     private static ItemStack heldFood(Player player) {
         ItemStack main = player.getMainHandItem();
-        if (FoodPoints.pointsFor(main) > 0.0) {
+        if (FoodPoints.pointsFor(main) != 0.0) {
             return main;
         }
         ItemStack off = player.getOffhandItem();
-        if (FoodPoints.pointsFor(off) > 0.0) {
+        if (FoodPoints.pointsFor(off) != 0.0) {
             return off;
         }
         return null;

@@ -1,5 +1,6 @@
 {
   "result": "poisonous_porridge",
   "gold_variant": false,
-  "junk_override": true
+  "junk_override": true,
+  "poisonous": true
 }

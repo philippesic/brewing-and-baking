@@ -1,6 +1,22 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "brewingandbaking:item/smoothie"
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "brewingandbaking:luxury_points",
+    "cases": [
+      {
+        "when": [1, 2],
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/smoothie/specked" }
+      },
+      {
+        "when": [3, 4],
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/smoothie/dusted" }
+      },
+      {
+        "when": 5,
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/smoothie/plated" }
+      }
+    ],
+    "fallback": { "type": "minecraft:model", "model": "brewingandbaking:item/smoothie" }
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "brewingandbaking:item/fish_sandwich"
+    "layer0": "brewingandbaking:item/fish_sandwich/fish_sandwich"
   }
 }

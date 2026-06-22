@@ -1,6 +1,22 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "brewingandbaking:item/fruit_tart"
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "brewingandbaking:luxury_points",
+    "cases": [
+      {
+        "when": [1, 2],
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/fruit_tart/specked" }
+      },
+      {
+        "when": [3, 4],
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/fruit_tart/dusted" }
+      },
+      {
+        "when": 5,
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/fruit_tart/plated" }
+      }
+    ],
+    "fallback": { "type": "minecraft:model", "model": "brewingandbaking:item/fruit_tart" }
   }
 }

@@ -44,9 +44,11 @@ public final class ModMeals {
 
     static {
         for (String name : NAMES) {
-            DeferredItem<Item> item = ITEMS.registerSimpleItem(name, props -> props
+            double defaultPoints = name.equals("poisonous_porridge") ? -DEFAULT_FOOD_POINTS : DEFAULT_FOOD_POINTS;
+            DeferredItem<Item> item = ITEMS.registerItem(name, MealItem::new, props -> props
+                    .stacksTo(1)
                     .food(MEAL_FOOD, Consumables.DEFAULT_FOOD)
-                    .component(ModDataComponents.FOOD_POINTS.get(), DEFAULT_FOOD_POINTS));
+                    .component(ModDataComponents.FOOD_POINTS.get(), defaultPoints));
             ALL.add(item);
             BY_NAME.put(name, item);
         }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "brewingandbaking:item/fruit_salad"
+    "layer0": "brewingandbaking:item/fruit_salad/fruit_salad"
   }
 }

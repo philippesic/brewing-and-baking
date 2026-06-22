@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "brewingandbaking:item/french_toast"
+    "layer0": "brewingandbaking:item/french_toast/french_toast"
   }
 }

@@ -91,8 +91,12 @@ public final class FoodPoints {
         VALUES.put(Items.ENCHANTED_GOLDEN_APPLE, 3.0);
     }
 
-    /** Food point value for a stack: per-stack component, else table entry, else scaled vanilla nutrition, else 0. */
+    /** Food point value for a stack: MEAL_MODIFIERS override, then per-stack component, then table entry, then scaled vanilla nutrition, else 0. */
     public static double pointsFor(ItemStack stack) {
+        MealModifiers modifiers = stack.get(ModDataComponents.MEAL_MODIFIERS.get());
+        if (modifiers != null && modifiers.foodPoints().isPresent()) {
+            return modifiers.foodPoints().get();
+        }
         Double assigned = stack.get(ModDataComponents.FOOD_POINTS.get());
         if (assigned != null) {
             return assigned;

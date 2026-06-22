@@ -20,6 +20,7 @@ public class MealRecipeRegistry extends SimplePreparableReloadListener<List<Meal
 
     private Map<EnumSet<FoodTag>, MealRecipe> byTags = new HashMap<>();
     private MealRecipe junkOverrideMeal = null;
+    private List<MealRecipe> all = new ArrayList<>();
 
     private MealRecipeRegistry() {}
 
@@ -36,6 +37,7 @@ public class MealRecipeRegistry extends SimplePreparableReloadListener<List<Meal
                 String mealName = json.get("result").getAsString();
                 boolean goldVariant = json.has("gold_variant") && json.get("gold_variant").getAsBoolean();
                 boolean junkOverride = json.has("junk_override") && json.get("junk_override").getAsBoolean();
+                boolean poisonous = json.has("poisonous") && json.get("poisonous").getAsBoolean();
 
                 List<EnumSet<FoodTag>> combinations = new ArrayList<>();
                 if (json.has("combinations")) {
@@ -54,7 +56,7 @@ public class MealRecipeRegistry extends SimplePreparableReloadListener<List<Meal
                     }
                 }
 
-                result.add(new MealRecipe(mealName, combinations, goldVariant, junkOverride));
+                result.add(new MealRecipe(mealName, combinations, goldVariant, junkOverride, poisonous));
             } catch (Exception e) {
                 LOGGER.error("Failed to load meal recipe {}", id, e);
             }
@@ -82,7 +84,16 @@ public class MealRecipeRegistry extends SimplePreparableReloadListener<List<Meal
 
         this.byTags = newMap;
         this.junkOverrideMeal = newJunkMeal;
+        this.all = List.copyOf(data);
         LOGGER.info("[BrewingAndBaking] Loaded {} meal recipes ({} tag combinations)", data.size(), newMap.size());
+    }
+
+    public List<MealRecipe> getAll() {
+        return all;
+    }
+
+    public Optional<MealRecipe> getJunkOverride() {
+        return Optional.ofNullable(junkOverrideMeal);
     }
 
     public Optional<MealRecipe> resolve(EnumSet<FoodTag> tags) {

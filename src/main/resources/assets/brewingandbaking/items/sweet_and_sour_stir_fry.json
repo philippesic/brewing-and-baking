@@ -1,6 +1,22 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "brewingandbaking:item/sweet_and_sour_stir_fry"
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "brewingandbaking:luxury_points",
+    "cases": [
+      {
+        "when": [1, 2],
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/sweet_and_sour_stir_fry/specked" }
+      },
+      {
+        "when": [3, 4],
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/sweet_and_sour_stir_fry/dusted" }
+      },
+      {
+        "when": 5,
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/sweet_and_sour_stir_fry/plated" }
+      }
+    ],
+    "fallback": { "type": "minecraft:model", "model": "brewingandbaking:item/sweet_and_sour_stir_fry" }
   }
 }

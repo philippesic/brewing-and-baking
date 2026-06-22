@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "brewingandbaking:item/paella"
+    "layer0": "brewingandbaking:item/paella/paella"
   }
 }

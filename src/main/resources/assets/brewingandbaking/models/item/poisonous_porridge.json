@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "brewingandbaking:item/poisonous_porridge"
+    "layer0": "brewingandbaking:item/poisonous_porridge/poisonous_porridge"
   }
 }

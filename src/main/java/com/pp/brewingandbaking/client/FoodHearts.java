@@ -21,6 +21,8 @@ final class FoodHearts {
     private static final Identifier CONTAINER = Identifier.withDefaultNamespace("hud/heart/container");
     private static final Identifier FULL = Identifier.withDefaultNamespace("hud/heart/full");
     private static final Identifier HALF = Identifier.withDefaultNamespace("hud/heart/half");
+    private static final Identifier POISONED_FULL = Identifier.withDefaultNamespace("hud/heart/poisoned_full");
+    private static final Identifier POISONED_HALF = Identifier.withDefaultNamespace("hud/heart/poisoned_half");
 
     private static final long PULSE_CYCLE_MS = 1600L;
 
@@ -48,8 +50,17 @@ final class FoodHearts {
     }
 
     static void drawHalfSlot(GuiGraphicsExtractor graphics, int baseX, int y, int slot, float alpha) {
+        drawHalfSlot(graphics, baseX, y, slot, alpha, false);
+    }
+
+    static void drawHalfSlot(GuiGraphicsExtractor graphics, int baseX, int y, int slot, float alpha, boolean poisonous) {
         int x = baseX + (slot / 2) * SEPARATION;
-        Identifier sprite = (slot % 2 == 0) ? HALF : FULL;
+        Identifier sprite;
+        if (poisonous) {
+            sprite = (slot % 2 == 0) ? POISONED_HALF : POISONED_FULL;
+        } else {
+            sprite = (slot % 2 == 0) ? HALF : FULL;
+        }
         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, x, y, SIZE, SIZE, alpha);
     }
 }

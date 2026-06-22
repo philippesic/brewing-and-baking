@@ -1,6 +1,22 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "brewingandbaking:item/fish_sandwich"
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "brewingandbaking:luxury_points",
+    "cases": [
+      {
+        "when": [1, 2],
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/fish_sandwich/specked" }
+      },
+      {
+        "when": [3, 4],
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/fish_sandwich/dusted" }
+      },
+      {
+        "when": 5,
+        "model": { "type": "minecraft:model", "model": "brewingandbaking:item/fish_sandwich/plated" }
+      }
+    ],
+    "fallback": { "type": "minecraft:model", "model": "brewingandbaking:item/fish_sandwich" }
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "brewingandbaking:item/goulash"
+    "layer0": "brewingandbaking:item/goulash/goulash"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "brewingandbaking:item/roasted_coffee_beans"
+    "layer0": "brewingandbaking:item/roasted_coffee_beans/roasted_coffee_beans"
   }
 }

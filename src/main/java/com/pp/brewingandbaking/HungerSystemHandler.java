@@ -6,7 +6,9 @@ import java.util.UUID;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodData;
+import com.pp.brewingandbaking.cooking.LuxuryEffects;
 import net.minecraft.world.level.gamerules.GameRules;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
@@ -57,8 +59,26 @@ public final class HungerSystemHandler {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
         }
+        MealModifiers modifiers = event.getItem().get(ModDataComponents.MEAL_MODIFIERS.get());
+        if (modifiers != null) {
+            modifiers.effect().ifPresent(e ->
+                    player.addEffect(LuxuryEffects.makeEffect(e, modifiers.durationModifier())));
+        } else {
+            MobEffectInstance mealEffect = event.getItem().get(ModDataComponents.MEAL_EFFECT.get());
+            if (mealEffect != null) {
+                player.addEffect(new MobEffectInstance(mealEffect));
+            }
+        }
+
         double points = FoodPoints.pointsFor(event.getItem());
-        if (points <= 0.0) {
+        if (points < 0.0) {
+            float damage = FoodPoints.rollHealth(-points, player.getRandom());
+            if (damage > 0.0F) {
+                player.hurt(player.damageSources().magic(), damage);
+            }
+            return;
+        }
+        if (points == 0.0) {
             return;
         }
         float health = FoodPoints.rollHealth(points, player.getRandom());

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "brewingandbaking:item/bread_pudding"
+    "layer0": "brewingandbaking:item/bread_pudding/bread_pudding"
   }
 }

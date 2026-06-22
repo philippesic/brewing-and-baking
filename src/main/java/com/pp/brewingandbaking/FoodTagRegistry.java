@@ -80,4 +80,19 @@ public class FoodTagRegistry extends SimplePreparableReloadListener<Map<FoodTag,
     public boolean hasTag(Item item) {
         return itemToTags.containsKey(item);
     }
+
+    /** Whether an item may go in the cooking pot: it carries a food tag and is not on the blocklist. */
+    public boolean isCookable(Item item) {
+        return hasTag(item) && !UncookableRegistry.INSTANCE.contains(item);
+    }
+
+    public List<Item> getItemsWithTag(FoodTag tag) {
+        List<Item> result = new ArrayList<>();
+        for (var entry : itemToTags.entrySet()) {
+            if (entry.getValue().contains(tag) && isCookable(entry.getKey())) {
+                result.add(entry.getKey());
+            }
+        }
+        return result;
+    }
 }
