@@ -1,0 +1,14 @@
+{
+  "result": "grilled_fish_and_vegetables",
+  "gold_variant": true,
+  "combinations": [
+    ["FISH", "VEGETABLE"],
+    ["FISH", "VEGETABLE", "EGG"],
+    ["FISH", "VEGETABLE", "MILK"],
+    ["FISH", "VEGETABLE", "GRAIN"],
+    ["FISH", "VEGETABLE", "EGG", "MILK"],
+    ["FISH", "VEGETABLE", "EGG", "GRAIN"],
+    ["FISH", "VEGETABLE", "MILK", "GRAIN"],
+    ["FISH", "VEGETABLE", "EGG", "MILK", "GRAIN"]
+  ]
+}

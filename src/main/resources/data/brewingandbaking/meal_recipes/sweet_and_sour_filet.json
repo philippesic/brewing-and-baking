@@ -1,0 +1,24 @@
+{
+  "result": "sweet_and_sour_filet",
+  "gold_variant": true,
+  "combinations": [
+    ["FISH", "VEGETABLE", "FRUIT"],
+    ["FISH", "VEGETABLE", "SWEETENER"],
+    ["FISH", "VEGETABLE", "FRUIT", "EGG"],
+    ["FISH", "VEGETABLE", "FRUIT", "MILK"],
+    ["FISH", "VEGETABLE", "FRUIT", "SWEETENER"],
+    ["FISH", "VEGETABLE", "FRUIT", "GRAIN"],
+    ["FISH", "VEGETABLE", "EGG", "SWEETENER"],
+    ["FISH", "VEGETABLE", "MILK", "SWEETENER"],
+    ["FISH", "VEGETABLE", "SWEETENER", "GRAIN"],
+    ["FISH", "VEGETABLE", "FRUIT", "EGG", "MILK"],
+    ["FISH", "VEGETABLE", "FRUIT", "EGG", "SWEETENER"],
+    ["FISH", "VEGETABLE", "FRUIT", "EGG", "GRAIN"],
+    ["FISH", "VEGETABLE", "FRUIT", "MILK", "SWEETENER"],
+    ["FISH", "VEGETABLE", "FRUIT", "MILK", "GRAIN"],
+    ["FISH", "VEGETABLE", "FRUIT", "SWEETENER", "GRAIN"],
+    ["FISH", "VEGETABLE", "EGG", "MILK", "SWEETENER"],
+    ["FISH", "VEGETABLE", "EGG", "SWEETENER", "GRAIN"],
+    ["FISH", "VEGETABLE", "MILK", "SWEETENER", "GRAIN"]
+  ]
+}

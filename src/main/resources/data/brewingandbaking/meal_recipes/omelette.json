@@ -1,0 +1,8 @@
+{
+  "result": "omelette",
+  "gold_variant": false,
+  "combinations": [
+    ["EGG", "MILK"],
+    ["EGG", "SWEETENER"]
+  ]
+}

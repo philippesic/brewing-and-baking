@@ -1,0 +1,10 @@
+{
+  "result": "veggie_wrap",
+  "gold_variant": true,
+  "combinations": [
+    ["VEGETABLE", "GRAIN"],
+    ["VEGETABLE", "FRUIT", "GRAIN"],
+    ["VEGETABLE", "SWEETENER", "GRAIN"],
+    ["VEGETABLE", "FRUIT", "SWEETENER", "GRAIN"]
+  ]
+}

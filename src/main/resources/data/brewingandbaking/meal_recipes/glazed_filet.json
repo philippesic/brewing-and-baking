@@ -1,0 +1,18 @@
+{
+  "result": "glazed_filet",
+  "gold_variant": true,
+  "combinations": [
+    ["FISH", "FRUIT"],
+    ["FISH", "SWEETENER"],
+    ["FISH", "FRUIT", "EGG"],
+    ["FISH", "FRUIT", "MILK"],
+    ["FISH", "FRUIT", "SWEETENER"],
+    ["FISH", "EGG", "SWEETENER"],
+    ["FISH", "MILK", "SWEETENER"],
+    ["FISH", "FRUIT", "EGG", "MILK"],
+    ["FISH", "FRUIT", "EGG", "SWEETENER"],
+    ["FISH", "FRUIT", "MILK", "SWEETENER"],
+    ["FISH", "EGG", "MILK", "SWEETENER"],
+    ["FISH", "FRUIT", "EGG", "MILK", "SWEETENER"]
+  ]
+}

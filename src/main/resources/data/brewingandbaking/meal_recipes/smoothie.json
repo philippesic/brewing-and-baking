@@ -1,0 +1,13 @@
+{
+  "result": "smoothie",
+  "gold_variant": true,
+  "combinations": [
+    ["FRUIT", "EGG"],
+    ["FRUIT", "MILK"],
+    ["FRUIT", "SWEETENER"],
+    ["FRUIT", "EGG", "MILK"],
+    ["FRUIT", "EGG", "SWEETENER"],
+    ["FRUIT", "MILK", "SWEETENER"],
+    ["FRUIT", "EGG", "MILK", "SWEETENER"]
+  ]
+}

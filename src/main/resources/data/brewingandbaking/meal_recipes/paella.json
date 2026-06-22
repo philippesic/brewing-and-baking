@@ -1,0 +1,11 @@
+{
+  "result": "paella",
+  "gold_variant": true,
+  "combinations": [
+    ["MEAT", "FISH", "VEGETABLE", "GRAIN"],
+    ["MEAT", "FISH", "VEGETABLE", "FRUIT", "GRAIN"],
+    ["MEAT", "FISH", "VEGETABLE", "EGG", "GRAIN"],
+    ["MEAT", "FISH", "VEGETABLE", "MILK", "GRAIN"],
+    ["MEAT", "FISH", "VEGETABLE", "SWEETENER", "GRAIN"]
+  ]
+}

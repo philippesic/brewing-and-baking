@@ -1,0 +1,14 @@
+{
+  "result": "goulash",
+  "gold_variant": true,
+  "combinations": [
+    ["MEAT", "VEGETABLE"],
+    ["MEAT", "VEGETABLE", "EGG"],
+    ["MEAT", "VEGETABLE", "MILK"],
+    ["MEAT", "VEGETABLE", "GRAIN"],
+    ["MEAT", "VEGETABLE", "EGG", "MILK"],
+    ["MEAT", "VEGETABLE", "EGG", "GRAIN"],
+    ["MEAT", "VEGETABLE", "MILK", "GRAIN"],
+    ["MEAT", "VEGETABLE", "EGG", "MILK", "GRAIN"]
+  ]
+}

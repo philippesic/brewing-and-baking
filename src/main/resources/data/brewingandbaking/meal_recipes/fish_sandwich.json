@@ -1,0 +1,21 @@
+{
+  "result": "fish_sandwich",
+  "gold_variant": true,
+  "combinations": [
+    ["FISH", "GRAIN"],
+    ["FISH", "FRUIT", "GRAIN"],
+    ["FISH", "EGG", "GRAIN"],
+    ["FISH", "MILK", "GRAIN"],
+    ["FISH", "SWEETENER", "GRAIN"],
+    ["FISH", "FRUIT", "EGG", "GRAIN"],
+    ["FISH", "FRUIT", "MILK", "GRAIN"],
+    ["FISH", "FRUIT", "SWEETENER", "GRAIN"],
+    ["FISH", "EGG", "MILK", "GRAIN"],
+    ["FISH", "EGG", "SWEETENER", "GRAIN"],
+    ["FISH", "MILK", "SWEETENER", "GRAIN"],
+    ["FISH", "FRUIT", "EGG", "MILK", "GRAIN"],
+    ["FISH", "FRUIT", "EGG", "SWEETENER", "GRAIN"],
+    ["FISH", "FRUIT", "MILK", "SWEETENER", "GRAIN"],
+    ["FISH", "EGG", "MILK", "SWEETENER", "GRAIN"]
+  ]
+}

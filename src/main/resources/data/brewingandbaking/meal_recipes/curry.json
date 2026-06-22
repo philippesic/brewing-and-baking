@@ -1,0 +1,14 @@
+{
+  "result": "curry",
+  "gold_variant": true,
+  "combinations": [
+    ["VEGETABLE", "MILK"],
+    ["VEGETABLE", "FRUIT", "MILK"],
+    ["VEGETABLE", "MILK", "SWEETENER"],
+    ["VEGETABLE", "MILK", "GRAIN"],
+    ["VEGETABLE", "FRUIT", "MILK", "SWEETENER"],
+    ["VEGETABLE", "FRUIT", "MILK", "GRAIN"],
+    ["VEGETABLE", "MILK", "SWEETENER", "GRAIN"],
+    ["VEGETABLE", "FRUIT", "MILK", "SWEETENER", "GRAIN"]
+  ]
+}

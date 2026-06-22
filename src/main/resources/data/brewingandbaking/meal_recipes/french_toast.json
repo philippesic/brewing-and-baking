@@ -1,0 +1,8 @@
+{
+  "result": "french_toast",
+  "gold_variant": false,
+  "combinations": [
+    ["EGG", "MILK", "GRAIN"],
+    ["EGG", "SWEETENER", "GRAIN"]
+  ]
+}

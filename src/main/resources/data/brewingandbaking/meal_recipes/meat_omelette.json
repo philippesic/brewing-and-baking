@@ -1,0 +1,14 @@
+{
+  "result": "meat_omelette",
+  "gold_variant": true,
+  "combinations": [
+    ["MEAT", "EGG"],
+    ["MEAT", "FRUIT", "EGG"],
+    ["MEAT", "EGG", "MILK"],
+    ["MEAT", "EGG", "SWEETENER"],
+    ["MEAT", "FRUIT", "EGG", "MILK"],
+    ["MEAT", "FRUIT", "EGG", "SWEETENER"],
+    ["MEAT", "EGG", "MILK", "SWEETENER"],
+    ["MEAT", "FRUIT", "EGG", "MILK", "SWEETENER"]
+  ]
+}

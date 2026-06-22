@@ -1,0 +1,8 @@
+{
+  "result": "meat_kebab",
+  "gold_variant": false,
+  "combinations": [
+    ["MEAT"],
+    ["MEAT", "MILK"]
+  ]
+}

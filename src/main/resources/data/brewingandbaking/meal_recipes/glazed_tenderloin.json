@@ -1,0 +1,12 @@
+{
+  "result": "glazed_tenderloin",
+  "gold_variant": true,
+  "combinations": [
+    ["MEAT", "FRUIT"],
+    ["MEAT", "SWEETENER"],
+    ["MEAT", "FRUIT", "MILK"],
+    ["MEAT", "FRUIT", "SWEETENER"],
+    ["MEAT", "MILK", "SWEETENER"],
+    ["MEAT", "FRUIT", "MILK", "SWEETENER"]
+  ]
+}

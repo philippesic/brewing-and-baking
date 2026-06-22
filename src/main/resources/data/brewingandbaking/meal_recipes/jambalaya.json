@@ -1,0 +1,17 @@
+{
+  "result": "jambalaya",
+  "gold_variant": true,
+  "combinations": [
+    ["MEAT", "FISH", "GRAIN"],
+    ["MEAT", "FISH", "FRUIT", "GRAIN"],
+    ["MEAT", "FISH", "EGG", "GRAIN"],
+    ["MEAT", "FISH", "MILK", "GRAIN"],
+    ["MEAT", "FISH", "SWEETENER", "GRAIN"],
+    ["MEAT", "FISH", "FRUIT", "EGG", "GRAIN"],
+    ["MEAT", "FISH", "FRUIT", "MILK", "GRAIN"],
+    ["MEAT", "FISH", "FRUIT", "SWEETENER", "GRAIN"],
+    ["MEAT", "FISH", "EGG", "MILK", "GRAIN"],
+    ["MEAT", "FISH", "EGG", "SWEETENER", "GRAIN"],
+    ["MEAT", "FISH", "MILK", "SWEETENER", "GRAIN"]
+  ]
+}

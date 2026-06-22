@@ -1,0 +1,17 @@
+{
+  "result": "mixed_grill",
+  "gold_variant": true,
+  "combinations": [
+    ["MEAT", "FISH", "VEGETABLE"],
+    ["MEAT", "FISH", "VEGETABLE", "FRUIT"],
+    ["MEAT", "FISH", "VEGETABLE", "EGG"],
+    ["MEAT", "FISH", "VEGETABLE", "MILK"],
+    ["MEAT", "FISH", "VEGETABLE", "SWEETENER"],
+    ["MEAT", "FISH", "VEGETABLE", "FRUIT", "EGG"],
+    ["MEAT", "FISH", "VEGETABLE", "FRUIT", "MILK"],
+    ["MEAT", "FISH", "VEGETABLE", "FRUIT", "SWEETENER"],
+    ["MEAT", "FISH", "VEGETABLE", "EGG", "MILK"],
+    ["MEAT", "FISH", "VEGETABLE", "EGG", "SWEETENER"],
+    ["MEAT", "FISH", "VEGETABLE", "MILK", "SWEETENER"]
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "result": "surf_and_turf",
+  "gold_variant": false,
+  "combinations": [
+    ["MEAT", "FISH"],
+    ["MEAT", "FISH", "EGG"],
+    ["MEAT", "FISH", "MILK"],
+    ["MEAT", "FISH", "EGG", "MILK"]
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "result": "veggie_omelette",
+  "gold_variant": true,
+  "combinations": [
+    ["VEGETABLE", "EGG"],
+    ["VEGETABLE", "FRUIT", "EGG"],
+    ["VEGETABLE", "EGG", "MILK"],
+    ["VEGETABLE", "EGG", "SWEETENER"],
+    ["VEGETABLE", "FRUIT", "EGG", "MILK"],
+    ["VEGETABLE", "FRUIT", "EGG", "SWEETENER"],
+    ["VEGETABLE", "EGG", "MILK", "SWEETENER"],
+    ["VEGETABLE", "FRUIT", "EGG", "MILK", "SWEETENER"]
+  ]
+}

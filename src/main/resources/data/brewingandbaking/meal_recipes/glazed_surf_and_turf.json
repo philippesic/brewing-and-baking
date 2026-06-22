@@ -1,0 +1,17 @@
+{
+  "result": "glazed_surf_and_turf",
+  "gold_variant": true,
+  "combinations": [
+    ["MEAT", "FISH", "FRUIT"],
+    ["MEAT", "FISH", "SWEETENER"],
+    ["MEAT", "FISH", "FRUIT", "EGG"],
+    ["MEAT", "FISH", "FRUIT", "MILK"],
+    ["MEAT", "FISH", "FRUIT", "SWEETENER"],
+    ["MEAT", "FISH", "EGG", "SWEETENER"],
+    ["MEAT", "FISH", "MILK", "SWEETENER"],
+    ["MEAT", "FISH", "FRUIT", "EGG", "MILK"],
+    ["MEAT", "FISH", "FRUIT", "EGG", "SWEETENER"],
+    ["MEAT", "FISH", "FRUIT", "MILK", "SWEETENER"],
+    ["MEAT", "FISH", "EGG", "MILK", "SWEETENER"]
+  ]
+}

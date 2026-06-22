@@ -1,0 +1,10 @@
+{
+  "result": "grilled_fish_skewer",
+  "gold_variant": false,
+  "combinations": [
+    ["FISH"],
+    ["FISH", "EGG"],
+    ["FISH", "MILK"],
+    ["FISH", "EGG", "MILK"]
+  ]
+}

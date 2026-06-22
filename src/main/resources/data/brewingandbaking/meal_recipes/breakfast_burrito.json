@@ -1,0 +1,13 @@
+{
+  "result": "breakfast_burrito",
+  "gold_variant": true,
+  "combinations": [
+    ["VEGETABLE", "EGG", "GRAIN"],
+    ["VEGETABLE", "FRUIT", "EGG", "GRAIN"],
+    ["VEGETABLE", "EGG", "MILK", "GRAIN"],
+    ["VEGETABLE", "EGG", "SWEETENER", "GRAIN"],
+    ["VEGETABLE", "FRUIT", "EGG", "MILK", "GRAIN"],
+    ["VEGETABLE", "FRUIT", "EGG", "SWEETENER", "GRAIN"],
+    ["VEGETABLE", "EGG", "MILK", "SWEETENER", "GRAIN"]
+  ]
+}

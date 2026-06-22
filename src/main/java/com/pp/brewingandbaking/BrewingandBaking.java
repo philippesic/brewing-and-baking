@@ -1,8 +1,12 @@
 package com.pp.brewingandbaking;
 
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Items;
@@ -18,10 +22,17 @@ public class BrewingandBaking {
         ModMeals.ITEMS.register(modBus);
         ModPotions.POTIONS.register(modBus);
         ModBlocks.BLOCKS.register(modBus);
-       // NeoForge.EVENT_BUS.addListener(ModBrewing::onRegisterBrewingRecipes);
-        net.neoforged.neoforge.common.NeoForge.EVENT_BUS.register(ModBrewing.class);
-        net.neoforged.neoforge.common.NeoForge.EVENT_BUS.register(HungerSystemHandler.class);
+        ModBlockEntities.BLOCK_ENTITIES.register(modBus);
+        NeoForge.EVENT_BUS.register(ModBrewing.class);
+        NeoForge.EVENT_BUS.register(HungerSystemHandler.class);
+        NeoForge.EVENT_BUS.register(BrewingandBaking.class);
         modBus.addListener(BrewingandBaking::addCreative);
+    }
+
+    @SubscribeEvent
+    public static void onAddReloadListeners(AddServerReloadListenersEvent event) {
+        event.addListener(Identifier.fromNamespaceAndPath(MODID, "food_tags"), FoodTagRegistry.INSTANCE);
+        event.addListener(Identifier.fromNamespaceAndPath(MODID, "meal_recipes"), MealRecipeRegistry.INSTANCE);
     }
 
 private static void addCreative(BuildCreativeModeTabContentsEvent event) {

@@ -1,0 +1,8 @@
+{
+  "result": "bread_pudding",
+  "gold_variant": false,
+  "combinations": [
+    ["MILK", "GRAIN"],
+    ["MILK", "SWEETENER", "GRAIN"]
+  ]
+}

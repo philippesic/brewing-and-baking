@@ -1,0 +1,21 @@
+{
+  "result": "burger",
+  "gold_variant": true,
+  "combinations": [
+    ["MEAT", "GRAIN"],
+    ["MEAT", "FRUIT", "GRAIN"],
+    ["MEAT", "EGG", "GRAIN"],
+    ["MEAT", "MILK", "GRAIN"],
+    ["MEAT", "SWEETENER", "GRAIN"],
+    ["MEAT", "FRUIT", "EGG", "GRAIN"],
+    ["MEAT", "FRUIT", "MILK", "GRAIN"],
+    ["MEAT", "FRUIT", "SWEETENER", "GRAIN"],
+    ["MEAT", "EGG", "MILK", "GRAIN"],
+    ["MEAT", "EGG", "SWEETENER", "GRAIN"],
+    ["MEAT", "MILK", "SWEETENER", "GRAIN"],
+    ["MEAT", "FRUIT", "EGG", "MILK", "GRAIN"],
+    ["MEAT", "FRUIT", "EGG", "SWEETENER", "GRAIN"],
+    ["MEAT", "FRUIT", "MILK", "SWEETENER", "GRAIN"],
+    ["MEAT", "EGG", "MILK", "SWEETENER", "GRAIN"]
+  ]
+}

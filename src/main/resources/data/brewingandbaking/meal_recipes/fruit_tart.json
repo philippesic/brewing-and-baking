@@ -1,0 +1,13 @@
+{
+  "result": "fruit_tart",
+  "gold_variant": true,
+  "combinations": [
+    ["FRUIT", "GRAIN"],
+    ["FRUIT", "EGG", "GRAIN"],
+    ["FRUIT", "MILK", "GRAIN"],
+    ["FRUIT", "SWEETENER", "GRAIN"],
+    ["FRUIT", "EGG", "MILK", "GRAIN"],
+    ["FRUIT", "EGG", "SWEETENER", "GRAIN"],
+    ["FRUIT", "MILK", "SWEETENER", "GRAIN"]
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "result": "sweet_and_sour_stir_fry",
+  "gold_variant": true,
+  "combinations": [
+    ["MEAT", "VEGETABLE", "FRUIT"],
+    ["MEAT", "VEGETABLE", "SWEETENER"],
+    ["MEAT", "VEGETABLE", "FRUIT", "EGG"],
+    ["MEAT", "VEGETABLE", "FRUIT", "MILK"],
+    ["MEAT", "VEGETABLE", "FRUIT", "SWEETENER"],
+    ["MEAT", "VEGETABLE", "FRUIT", "GRAIN"],
+    ["MEAT", "VEGETABLE", "EGG", "SWEETENER"],
+    ["MEAT", "VEGETABLE", "MILK", "SWEETENER"],
+    ["MEAT", "VEGETABLE", "SWEETENER", "GRAIN"],
+    ["MEAT", "VEGETABLE", "FRUIT", "EGG", "MILK"],
+    ["MEAT", "VEGETABLE", "FRUIT", "EGG", "SWEETENER"],
+    ["MEAT", "VEGETABLE", "FRUIT", "EGG", "GRAIN"],
+    ["MEAT", "VEGETABLE", "FRUIT", "MILK", "SWEETENER"],
+    ["MEAT", "VEGETABLE", "FRUIT", "MILK", "GRAIN"],
+    ["MEAT", "VEGETABLE", "FRUIT", "SWEETENER", "GRAIN"],
+    ["MEAT", "VEGETABLE", "EGG", "MILK", "SWEETENER"],
+    ["MEAT", "VEGETABLE", "EGG", "SWEETENER", "GRAIN"],
+    ["MEAT", "VEGETABLE", "MILK", "SWEETENER", "GRAIN"]
+  ]
+}
