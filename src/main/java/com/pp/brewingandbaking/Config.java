@@ -1,42 +1,17 @@
 package com.pp.brewingandbaking;
 
-import java.util.List;
-
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class Config {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-    public static final ModConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
-            .comment("Whether to log the dirt block on common setup")
-            .define("logDirtBlock", true);
+    public static final ModConfigSpec.BooleanValue DATA_COLLECTION_ENABLED = BUILDER
+            .comment("Allow Brewing & Baking to log meals eaten anonymously.")
+            .define("dataCollectionEnabled", false);
 
-    public static final ModConfigSpec.IntValue MAGIC_NUMBER = BUILDER
-            .comment("A magic number")
-            .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
+    public static final ModConfigSpec.BooleanValue CONSENT_SHOWN = BUILDER
+            .comment("Whether the first-run data consent screen has been shown. Set to false to show it again on next launch.")
+            .define("consentShown", false);
 
-    public static final ModConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
-            .comment("What you want the introduction message to be for the magic number")
-            .define("magicNumberIntroduction", "The magic number is... ");
-
-    // a list of strings that are treated as identifiers for items
-    public static final ModConfigSpec.ConfigValue<List<? extends String>> ITEM_STRINGS = BUILDER
-            .comment("A list of items to log on common setup.")
-            .defineListAllowEmpty(
-                    "items",
-                    List.of("minecraft:iron_ingot"),
-                    () -> "",
-                    Config::validateItemName
-            );
-
-    static final ModConfigSpec SPEC = BUILDER.build();
-
-    private static boolean validateItemName(final Object obj) {
-        if (!(obj instanceof String itemName)) return false;
-
-        Identifier id = Identifier.tryParse(itemName);
-        return id != null && BuiltInRegistries.ITEM.containsKey(id);
-    }
+    public static final ModConfigSpec SPEC = BUILDER.build();
 }

@@ -9,6 +9,7 @@ public class CookingPotOutSlot extends Slot {
         super(container, slot, x, y);
     }
 
+    @Override
     public boolean mayPlace(final ItemStack itemStack) {
         return false;
     }

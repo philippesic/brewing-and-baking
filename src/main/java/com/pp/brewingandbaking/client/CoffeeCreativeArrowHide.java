@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 @EventBusSubscriber(
     modid = BrewingandBaking.MODID,
-    //bus = EventBusSubscriber.Bus.MOD,   // IMPORTANT (this event is on the mod bus)
     value = Dist.CLIENT
 )
 public final class CoffeeCreativeArrowHide {

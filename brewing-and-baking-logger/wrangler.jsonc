@@ -1,0 +1,15 @@
+{
+	"name": "brewing-and-baking-logger",
+	"main": "src/index.js",
+	"compatibility_date": "2025-01-01",
+	"observability": {
+		"enabled": true,
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "brewingandbaking-logs",
+			"database_id": "8ecd40a4-a020-4b9f-92e9-d3c513df603a"
+		}
+	],
+}

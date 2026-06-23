@@ -30,7 +30,7 @@ public final class ModBrewing {
 
         PotionBrewing.Builder builder = event.getBuilder();
 
-        boolean removedAny = removeVanillaContainerConversions(builder);
+        removeVanillaContainerConversions(builder);
 
         builder.addRecipe(new NoCoffeeContainerConversionsRecipe());
     }
@@ -45,7 +45,7 @@ public final class ModBrewing {
         PotionContents contents = new PotionContents(
             Optional.of(ModPotions.COFFEE),
             Optional.of(COFFEE_COLOR),
-            java.util.List.of(),
+            List.of(),
             Optional.empty()
         );
 
@@ -66,7 +66,6 @@ public final class ModBrewing {
         boolean isDragonsBreath = ingredient.is(Items.DRAGON_BREATH);
         if (!isGunpowder && !isDragonsBreath) return;
 
-        // Cancel Brew to avoid variants
         for (int i = 0; i < event.getLength(); i++) {
             ItemStack s = event.getItem(i);
             if (isCoffeePotionStack(s)) {
@@ -76,7 +75,6 @@ public final class ModBrewing {
         }
     }
 
-    // Force Tinting
     @SubscribeEvent
     public static void onBrewPost(PotionBrewEvent.Post event) {
         for (int i = 0; i < event.getLength(); i++) {

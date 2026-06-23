@@ -48,16 +48,12 @@ public class CookingPotBlock extends Block implements EntityBlock {
                 : InteractionResult.SUCCESS_SERVER;
     }
 
-    @SuppressWarnings("unchecked")
-    public static <E extends BlockEntity, A extends BlockEntity> @Nullable BlockEntityTicker<A> createTickerHelper(
-            BlockEntityType<A> type, BlockEntityType<E> checkedType, BlockEntityTicker<? super E> ticker
-    ) {
-        return checkedType == type ? (BlockEntityTicker<A>) ticker : null;
-    }
-
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ModBlockEntityTypes.COOKING_POT_BLOCK_ENTITY.get(), CookingPotBlockEntity::serverTick);
+    @SuppressWarnings("unchecked")
+    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return ModBlockEntityTypes.COOKING_POT_BLOCK_ENTITY.get() == type
+                ? (BlockEntityTicker<T>) (BlockEntityTicker<CookingPotBlockEntity>) CookingPotBlockEntity::serverTick
+                : null;
     }
 
 }

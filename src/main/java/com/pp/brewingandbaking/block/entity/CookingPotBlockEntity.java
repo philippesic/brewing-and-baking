@@ -30,8 +30,8 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
     protected NonNullList<ItemStack> items;
     protected final ContainerData dataAccess;
     public int heated;
-    public int cooking_duration;
-    public int cook_total;
+    public int cookingDuration;
+    public int cookTotal;
 
     public CookingPotBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.COOKING_POT_BLOCK_ENTITY.get(), pos, state);
@@ -39,26 +39,19 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
 
         this.dataAccess = new ContainerData() {
             public int get(final int dataId) {
-                if (dataId == 0) {
-                    return heated;
-                }
-                if (dataId == 1) {
-                    return cooking_duration;
-                }
-                return cook_total;
+                return switch (dataId) {
+                    case 0 -> heated;
+                    case 1 -> cookingDuration;
+                    default -> cookTotal;
+                };
             }
 
             public void set(final int dataId, final int value) {
-                if (dataId == 0) {
-                    heated = value;
+                switch (dataId) {
+                    case 0 -> heated = value;
+                    case 1 -> cookingDuration = value;
+                    case 2 -> cookTotal = value;
                 }
-                if (dataId == 1) {
-                    cooking_duration = value;
-                }
-                if (dataId == 2) {
-                    cook_total = value;
-                }
-
             }
 
             public int getCount() {
@@ -74,8 +67,8 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
         items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(input, items);
         heated = input.getShortOr("heated", (short) 0);
-        cooking_duration = input.getShortOr("cooking_duration", (short) 0);
-        cook_total = input.getShortOr("cook_total", (short) 0);
+        cookingDuration = input.getShortOr("cookingDuration", (short) 0);
+        cookTotal = input.getShortOr("cookTotal", (short) 0);
 
     }
 
@@ -83,8 +76,8 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
     protected void saveAdditional(final ValueOutput output) {
         super.saveAdditional(output);
         output.putShort("heated", (short) heated);
-        output.putShort("cooking_duration", (short) cooking_duration);
-        output.putShort("cook_total", (short) cook_total);
+        output.putShort("cookingDuration", (short) cookingDuration);
+        output.putShort("cookTotal", (short) cookTotal);
         ContainerHelper.saveAllItems(output, items);
     }
 
@@ -120,8 +113,8 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
 
         be.heated = level.getBlockState(pos.below()).is(Blocks.LAVA_CAULDRON) ? 1 : 0;
 
-        int prevDuration = be.cooking_duration;
-        int prevTotal = be.cook_total;
+        int prevDuration = be.cookingDuration;
+        int prevTotal = be.cookTotal;
         boolean itemsChanged = false;
 
         List<ItemStack> inputs = new ArrayList<>(be.items.size() - 1);
@@ -131,22 +124,22 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
 
         Optional<MealRecipe> match = MealAssembler.findRecipe(inputs);
         if (match.isEmpty()) {
-            be.cooking_duration = 0;
-            be.cook_total = 0;
+            be.cookingDuration = 0;
+            be.cookTotal = 0;
         } else {
             MealRecipe recipe = match.get();
             int cookTime = MealAssembler.cookTime(inputs);
-            be.cook_total = cookTime;
+            be.cookTotal = cookTime;
 
             // Only advance while the output slot can take the finished meal, so a blocked output
             // stalls cooking at the start rather than completing silently in the background.
             boolean canOutput = canAccept(be.items.get(0), MealAssembler.resultItem(recipe));
 
             if (be.heated == 1 && canOutput) {
-                be.cooking_duration++;
+                be.cookingDuration++;
             }
 
-            if (canOutput && be.cooking_duration >= cookTime) {
+            if (canOutput && be.cookingDuration >= cookTime) {
                 ItemStack result = MealAssembler.assemble(recipe, inputs, server.getRandom());
                 for (int slot = 1; slot < be.items.size(); slot++) {
                     ItemStack ingredient = be.items.get(slot);
@@ -160,12 +153,12 @@ public class CookingPotBlockEntity extends BaseContainerBlockEntity {
                 } else {
                     output.grow(result.getCount());
                 }
-                be.cooking_duration = 0;
+                be.cookingDuration = 0;
                 itemsChanged = true;
             }
         }
 
-        if (itemsChanged || be.cooking_duration != prevDuration || be.cook_total != prevTotal) {
+        if (itemsChanged || be.cookingDuration != prevDuration || be.cookTotal != prevTotal) {
             be.setChanged();
         }
     }

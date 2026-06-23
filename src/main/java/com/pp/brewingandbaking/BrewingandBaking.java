@@ -39,81 +39,69 @@ public class BrewingandBaking {
         event.addListener(Identifier.fromNamespaceAndPath(MODID, "uncookable"), UncookableRegistry.INSTANCE);
     }
 
-private static void addCreative(BuildCreativeModeTabContentsEvent event) {
-
-    // Food and Drinks tab
-    if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
-        event.insertAfter(
-            new ItemStack(Items.GLOW_BERRIES),
-            new ItemStack(ModItems.CHERRIES.get()),
-            CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-        );
-
-        event.insertAfter(
-            new ItemStack(ModItems.CHERRIES.get()),
-            new ItemStack(ModItems.CHERRY_JAM.get()),
-            CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-        );
-
-        event.insertAfter(
-            new ItemStack(ModItems.CHERRY_JAM.get()),
-            new ItemStack(ModItems.CHERRY_PIE.get()),
-            CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-        );
-
-        event.insertAfter(
-            new ItemStack(Items.HONEY_BOTTLE),
-            ModBrewing.makeCoffeePotionStack(),
-            CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-        );
-        
-        event.insertAfter(new ItemStack(Items.COOKIE),
-            new ItemStack(ModItems.CHOCOLATE.get()),
-            CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-        );
-
-        for (var meal : ModMeals.ALL) {
-            event.accept(new ItemStack(meal.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+    private static void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.insertAfter(
+                new ItemStack(Items.GLOW_BERRIES),
+                new ItemStack(ModItems.CHERRIES.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                new ItemStack(ModItems.CHERRIES.get()),
+                new ItemStack(ModItems.CHERRY_JAM.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                new ItemStack(ModItems.CHERRY_JAM.get()),
+                new ItemStack(ModItems.CHERRY_PIE.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                new ItemStack(Items.HONEY_BOTTLE),
+                ModBrewing.makeCoffeePotionStack(),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                new ItemStack(Items.COOKIE),
+                new ItemStack(ModItems.CHOCOLATE.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            for (var meal : ModMeals.ALL) {
+                event.accept(new ItemStack(meal.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            }
         }
-    }
 
-    // Ingredients tab
-    if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.insertAfter(
+                new ItemStack(Items.WHEAT),
+                new ItemStack(ModItems.COFFEE_BEANS.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                new ItemStack(ModItems.COFFEE_BEANS.get()),
+                new ItemStack(ModItems.ROASTED_COFFEE_BEANS.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.insertAfter(
+                new ItemStack(ModItems.ROASTED_COFFEE_BEANS.get()),
+                new ItemStack(ModItems.CACAO_NIBS.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+        }
 
-        event.insertAfter(
-            new ItemStack(Items.WHEAT),
-            new ItemStack(ModItems.COFFEE_BEANS.get()),
-            CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-        );
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.insertAfter(
+                new ItemStack(Items.SWEET_BERRIES),
+                new ItemStack(ModItems.COFFEE_BEANS.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+        }
 
-        event.insertAfter(
-            new ItemStack(ModItems.COFFEE_BEANS.get()),
-            new ItemStack(ModItems.ROASTED_COFFEE_BEANS.get()),
-            CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-        );
-
-        event.insertAfter(new ItemStack(ModItems.ROASTED_COFFEE_BEANS.get()),
-            new ItemStack(ModItems.CACAO_NIBS.get()),
-            CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-        );
-
-    }
-
-    // Nature Tab
-    if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
-        event.insertAfter(
-            new ItemStack(Items.SWEET_BERRIES),
-            new ItemStack(ModItems.COFFEE_BEANS.get()),
-            CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-        );
-    }
-
-    // Functional Blocks Tab
-    if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-        event.accept(
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(
                 new ItemStack(ModItems.COOKING_POT.get()),
                 CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
-        );
+            );
+        }
     }
-}
 }

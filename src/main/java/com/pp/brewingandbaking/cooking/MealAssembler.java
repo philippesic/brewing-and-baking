@@ -92,7 +92,6 @@ public final class MealAssembler {
             return result;
         }
 
-        luxury = Math.min(LuxuryEffects.MAX_LUXURY, luxury);
         result.set(ModDataComponents.FOOD_POINTS.get(), base * FOOD_POINT_MULTIPLIER + luxury);
 
         if (luxury > 0 && recipe.goldVariant()) {

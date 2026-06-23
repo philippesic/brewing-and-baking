@@ -35,24 +35,21 @@ public final class CoffeeCreativeTabFix {
 
         ItemStack anchor = new ItemStack(Items.HONEY_BOTTLE);
 
-        // Make separate stacks for parent/search so we dont reuse the same instance
-        ItemStack coffeeParent = ModBrewing.makeCoffeePotionStack();
-        ItemStack coffeeSearch = ModBrewing.makeCoffeePotionStack();
-
         try {
             event.insertAfter(anchor, ModBrewing.makeCoffeePotionStack(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             return;
         } catch (IllegalArgumentException ignored) {
         }
 
-        // Parent tab insertion
+        ItemStack coffeeParent = ModBrewing.makeCoffeePotionStack();
+        ItemStack coffeeSearch = ModBrewing.makeCoffeePotionStack();
+
         try {
             event.insertAfter(anchor, coffeeParent, CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
         } catch (IllegalArgumentException ignored) {
             event.accept(coffeeParent, CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
         }
 
-        // Search tab insertion
         try {
             event.insertAfter(anchor, coffeeSearch, CreativeModeTab.TabVisibility.SEARCH_TAB_ONLY);
         } catch (IllegalArgumentException ignored) {
@@ -65,7 +62,6 @@ public final class CoffeeCreativeTabFix {
             Iterable<ItemStack> immutableView,
             CreativeModeTab.TabVisibility visibilityForThatView
     ) {
-        // Copy first so we can call remove
         var copy = new ArrayList<ItemStack>();
         for (ItemStack s : immutableView) copy.add(s);
 

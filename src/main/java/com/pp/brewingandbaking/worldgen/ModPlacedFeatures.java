@@ -20,12 +20,12 @@ public final class ModPlacedFeatures {
                     new PlacedFeature(
                             ModConfiguredFeatures.COFFEE_PATCH.getDelegate(),
                             List.of(
-                                    RarityFilter.onAverageOnceEvery(32), // Edit for spawnrate
+                                    RarityFilter.onAverageOnceEvery(32),
                                     InSquarePlacement.spread(),
                                     PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                                     BiomeFilter.biome(),
-                                    CountPlacement.of(2), // patch size (was RandomPatch tries)
-                                    RandomOffsetPlacement.ofTriangle(2, 1) // xzSpread / ySpread
+                                    CountPlacement.of(2),
+                                    RandomOffsetPlacement.ofTriangle(2, 1)
                             )
                     )
             );

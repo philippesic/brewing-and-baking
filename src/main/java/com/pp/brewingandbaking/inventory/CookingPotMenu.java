@@ -46,7 +46,7 @@ public class CookingPotMenu extends AbstractContainerMenu {
         BlockPos pos = buf.readBlockPos();
         BlockEntity e = playerInv.player.level().getBlockEntity(pos);
         if (e instanceof CookingPotBlockEntity be) return be;
-        throw new IllegalStateException("Expected CookingPotBlockEnity at " + pos + ", got: " + e);
+        throw new IllegalStateException("Expected CookingPotBlockEntity at " + pos + ", got: " + e);
     }
 
     private static final int OUTPUT_SLOT = 0;

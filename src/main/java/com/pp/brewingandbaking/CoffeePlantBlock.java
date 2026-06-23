@@ -24,10 +24,11 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
-public class CoffeePlantBlock extends BushBlock { // BushBlock extends bonemealability of BoneMealableBlock
+public class CoffeePlantBlock extends BushBlock {
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
-    private static final VoxelShape SHAPE_STAGE_0; // defined in static below
+    private static final VoxelShape SHAPE_STAGE_0;
     private static final VoxelShape SHAPE_STAGE_1;
     private static final VoxelShape SHAPE_DEFAULT;
 
@@ -72,14 +73,12 @@ public class CoffeePlantBlock extends BushBlock { // BushBlock extends bonemeala
                                        Player player, InteractionHand hand, BlockHitResult hit) {
         int age = state.getValue(AGE);
 
-        // Harvest when mature
         if (age >= 3) {
             int dropCount = 1 + level.getRandom().nextInt(2); // 1–2 beans
             popResource(level, pos, new ItemStack(ModItems.COFFEE_BEANS.get(), dropCount));
             level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.getRandom().nextFloat() * 0.4F);
 
-            // Reset age
-            level.setBlock(pos, state.setValue(AGE, 2), 2); //Check
+            level.setBlock(pos, state.setValue(AGE, 2), 2);
             level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
 
             return InteractionResult.SUCCESS;
@@ -90,37 +89,37 @@ public class CoffeePlantBlock extends BushBlock { // BushBlock extends bonemeala
 
     @Override
     protected boolean mayPlaceOn(BlockState below, BlockGetter level, BlockPos pos) {
-        return below.is(BlockTags.DIRT) || below.is(BlockTags.SAND) || below.is(net.minecraft.world.level.block.Blocks.FARMLAND);
+        return below.is(BlockTags.DIRT) || below.is(BlockTags.SAND) || below.is(Blocks.FARMLAND);
     }
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockPos belowPos = pos.below();
-        return mayPlaceOn(level.getBlockState(belowPos), (BlockGetter) level, belowPos);
+        return mayPlaceOn(level.getBlockState(belowPos), level, belowPos);
     }
 
     @Override
-public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
-    return state.getValue(AGE) < 3;
-}
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+        return state.getValue(AGE) < 3;
+    }
 
-@Override
-public boolean isBonemealSuccess(Level level, RandomSource rand, BlockPos pos, BlockState state) {
-    return true;
-}
+    @Override
+    public boolean isBonemealSuccess(Level level, RandomSource rand, BlockPos pos, BlockState state) {
+        return true;
+    }
 
-@Override
-public void performBonemeal(ServerLevel level, RandomSource rand, BlockPos pos, BlockState state) {
-    int age = state.getValue(AGE);
-    int inc = 1 + rand.nextInt(1); // Should randomize normal growth on bonemeal
-    int next = Math.min(3, age + inc);
-    level.setBlock(pos, state.setValue(AGE, next), 2);
-}
+    @Override
+    public void performBonemeal(ServerLevel level, RandomSource rand, BlockPos pos, BlockState state) {
+        int age = state.getValue(AGE);
+        int inc = 1 + rand.nextInt(2);
+        int next = Math.min(3, age + inc);
+        level.setBlock(pos, state.setValue(AGE, next), 2);
+    }
 
-static {
-    SHAPE_STAGE_0 = Block.column(10.0D, 0.0D, 11.0D);
-    SHAPE_STAGE_1 = Block.column(12.0D, 0.0D, 14.0D);
-    SHAPE_DEFAULT = Block.column(14.0D, 0.0D, 14.0D);
-}
+    static {
+        SHAPE_STAGE_0 = Block.column(10.0D, 0.0D, 11.0D);
+        SHAPE_STAGE_1 = Block.column(12.0D, 0.0D, 14.0D);
+        SHAPE_DEFAULT = Block.column(14.0D, 0.0D, 14.0D);
+    }
 
 }

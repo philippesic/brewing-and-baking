@@ -22,7 +22,6 @@ public class CoffeeBeansItem extends Item {
         Level level = ctx.getLevel();
         BlockPos groundPos = ctx.getClickedPos();
 
-        // On #dirt
         BlockState groundState = level.getBlockState(groundPos);
         if (!groundState.is(BlockTags.DIRT)) {
             return InteractionResult.PASS;
