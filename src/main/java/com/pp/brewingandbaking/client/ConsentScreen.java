@@ -12,7 +12,7 @@ import net.minecraft.network.chat.Component;
 import java.util.List;
 
 /**
- * First-run popup that explains local food logging and lets the player opt in or out.
+ * First-run popup that explains food logging and lets the player opt in or out.
  * Shown once on the title screen; can be re-triggered by setting consentShown=false in Mod Config.
  */
 public class ConsentScreen extends Screen {
@@ -25,13 +25,9 @@ public class ConsentScreen extends Screen {
     private static final Component TITLE_TEXT =
             Component.literal("Brewing & Baking — Usage Data");
     private static final Component BODY_1 =
-            Component.literal("Help improve the mod by enabling usage logging.");
+            Component.literal("Help improve the mod by enabling anonymous usage logging.");
     private static final Component BODY_2 =
-            Component.literal("This records which foods you eat and when. Log data is collected anonymously, and you can view your log at any time in:");
-    private static final Component BODY_3 =
-            Component.literal("{minecraft}/logs/brewingandbaking-food.log");
-    private static final Component BODY_4 =
-            Component.literal("No personal data is collected. You can change this at any time via the Mod Config screen.");
+            Component.literal("The only thing we track is the number of times each food item is eaten. No personal information is collected. You can change this at any time via the Mod Config screen.");
     private static final Component OPT_IN_LABEL =
             Component.literal("Enable logging");
 
@@ -57,8 +53,6 @@ public class ConsentScreen extends Screen {
 
         contentY += wrappedHeight(BODY_1) + 6;
         contentY += wrappedHeight(BODY_2) + 6;
-        contentY += wrappedHeight(BODY_3) + 10;
-        contentY += wrappedHeight(BODY_4) + 6;
 
         checkbox = Checkbox.builder(OPT_IN_LABEL, this.font)
                 .pos(contentX, contentY)
@@ -102,11 +96,7 @@ public class ConsentScreen extends Screen {
 
         y = drawWrapped(graphics, BODY_1, contentX, y, 0xFFCCCCCC);
         y += 6;
-        y = drawWrapped(graphics, BODY_2, contentX, y, 0xFFAAAAAA);
-        y += 6;
-        y = drawWrapped(graphics, BODY_3, contentX, y, 0xFF888888);
-        y += 6;
-        y = drawWrapped(graphics, BODY_4, contentX, y, 0xFFAAAAAA);
+        drawWrapped(graphics, BODY_2, contentX, y, 0xFFAAAAAA);
 
         super.extractRenderState(graphics, mouseX, mouseY, partialTick);
     }
@@ -145,7 +135,6 @@ public class ConsentScreen extends Screen {
         h += LINE_H + 4 + 6; // title + gap + separator
         h += wrappedHeight(BODY_1) + 6;
         h += wrappedHeight(BODY_2) + 6;
-        h += wrappedHeight(BODY_3) + 10;
         h += 20 + 10; // checkbox height approx
         h += 20 + PADDING; // button
         return h;

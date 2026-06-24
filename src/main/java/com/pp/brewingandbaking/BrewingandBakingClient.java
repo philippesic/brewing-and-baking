@@ -23,6 +23,7 @@ public class BrewingandBakingClient {
         container.registerConfig(ModConfig.Type.CLIENT, Config.SPEC);
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
         NeoForge.EVENT_BUS.register(FoodLogger.class);
+        FoodLogger.init();
     }
 
     @SubscribeEvent

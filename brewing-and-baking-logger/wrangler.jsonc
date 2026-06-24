@@ -5,6 +5,10 @@
 	"observability": {
 		"enabled": true,
 	},
+	// Local dev / test placeholder — production key set via: wrangler secret put AUTH_KEY
+	"vars": {
+		"AUTH_KEY": "bnb-test"
+	},
 	"d1_databases": [
 		{
 			"binding": "DB",

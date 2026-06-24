@@ -146,6 +146,29 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 }
 
+// Injects the analytics auth key into a generated BuildConfig class.
+// Set bnb_logger_key in ~/.gradle/gradle.properties or as ORG_GRADLE_PROJECT_bnb_logger_key
+// in CI secrets. Contributor builds without the property compile with an empty key.
+def bnbLoggerKey = findProperty('bnb_logger_key') ?: ''
+def buildConfigDir = layout.buildDirectory.dir("generated/sources/buildConfig")
+var generateBuildConfig = tasks.register("generateBuildConfig") {
+    outputs.dir buildConfigDir
+    inputs.property "bnbLoggerKey", bnbLoggerKey
+    doLast {
+        def file = buildConfigDir.get().file("com/pp/brewingandbaking/BuildConfig.java").asFile
+        file.parentFile.mkdirs()
+        file.text = """\
+package com.pp.brewingandbaking;
+public final class BuildConfig {
+    public static final String LOGGER_KEY = "${bnbLoggerKey}";
+    private BuildConfig() {}
+}
+"""
+    }
+}
+sourceSets.main.java.srcDir buildConfigDir
+tasks.named('compileJava').configure { dependsOn generateBuildConfig }
+
 // This block of code expands all declared replace properties in the specified resource targets.
 // A missing property will result in an error. Properties are expanded using ${} Groovy notation.
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

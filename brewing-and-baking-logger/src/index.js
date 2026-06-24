@@ -1,7 +1,21 @@
-const MAX_BATCH = 100;
+// D1 migration required before deploying:
+// CREATE TABLE IF NOT EXISTS rate_limits (
+//   key TEXT PRIMARY KEY,
+//   count INTEGER NOT NULL DEFAULT 0,
+//   window_start INTEGER NOT NULL
+// );
+//
+// Set the auth secret before deploying:
+// wrangler secret put AUTH_KEY
+
+const MAX_BATCH = 500;
+const MAX_PAYLOAD_BYTES = 65_536;
 const MAX_ITEM_ID_LEN = 256;
 const MAX_COUNT = 1_000_000;
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 60_000;
 
 export default {
 	async fetch(request, env) {
@@ -20,12 +34,31 @@ export default {
 };
 
 async function handleBatch(request, env) {
+	if (request.headers.get('X-BnB-Key') !== env.AUTH_KEY) {
+		return new Response('', { status: 403 });
+	}
+
+	const contentLength = parseInt(request.headers.get('Content-Length') ?? '0', 10);
+	if (contentLength > MAX_PAYLOAD_BYTES) {
+		return new Response('', { status: 413 });
+	}
+
+	const rawBody = await request.text();
+	if (rawBody.length > MAX_PAYLOAD_BYTES) {
+		return new Response('', { status: 413 });
+	}
+
 	let body;
-	try { body = await request.json(); } catch { return new Response('', { status: 400 }); }
+	try { body = JSON.parse(rawBody); } catch { return new Response('', { status: 400 }); }
 
 	const { userId, entries } = body;
 	if (!UUID_RE.test(userId) || !Array.isArray(entries) || entries.length > MAX_BATCH) {
 		return new Response('', { status: 400 });
+	}
+
+	const ip = request.headers.get('CF-Connecting-IP') ?? request.headers.get('X-Forwarded-For') ?? 'unknown';
+	if (await isRateLimited(env, ip, userId)) {
+		return new Response('', { status: 429 });
 	}
 
 	const now = new Date().toISOString();
@@ -51,6 +84,25 @@ async function handleBatch(request, env) {
 	if (ops.length > 0) await env.DB.batch(ops);
 
 	return new Response('OK');
+}
+
+async function isRateLimited(env, ip, userId) {
+	const key = `${ip}:${userId}`;
+	const windowStart = Math.floor(Date.now() / RATE_LIMIT_WINDOW_MS) * RATE_LIMIT_WINDOW_MS;
+
+	try {
+		const row = await env.DB.prepare(
+			`INSERT INTO rate_limits (key, count, window_start) VALUES (?, 1, ?)
+			 ON CONFLICT(key) DO UPDATE SET
+			   count = CASE WHEN window_start = excluded.window_start THEN count + 1 ELSE 1 END,
+			   window_start = excluded.window_start
+			 RETURNING count`
+		).bind(key, windowStart).first();
+
+		return (row?.count ?? 1) > RATE_LIMIT_MAX;
+	} catch {
+		return false;
+	}
 }
 
 function escapeHtml(str) {
